@@ -1,0 +1,167 @@
+<div class="content">
+            	<?php echo $this->action('menu', 'widgets'); ?>
+                
+                <div class="clear"></div>
+                
+                <!-- Left Column -->
+                <div class="left">  
+                    <?php echo $this->action('accountmenu', 'widgets'); ?>
+                    
+                    <?php echo $this->action('notification', 'widgets'); ?>
+                </div>
+                <!-- END Left Column -->
+                
+                <!-- Right Column -->
+                <div class="right">
+                	<h1><?php echo $this->user->name . ' ' . $this->user->lastname; ?></h1>
+                    
+                    <!-- Profile Photos -->
+                    <div class="profilePhotosBlock">
+                        
+					  	<div class="main_image">
+					  		<span class="text_empty" <?php if($this->images) echo 'style="display: none;"'; ?>>
+					  			<?php echo $this->translate('EmptyImage'); ?>
+							</span>
+							<?php if($this->images) { ?>
+								<img src="<?php echo $this->images[0]['big']; ?>" alt="" />
+								<?php /*if($this->images[0]['image'] == $this->main_image) { ?>
+									<div class="image-status" style="display: none;"><?php echo $this->translate('Make main'); ?></div>
+									<div class="image-status-current"><?php echo $this->translate('Main'); ?></div>
+								<?php }else { ?>
+									<div class="image-status"><?php echo $this->translate('Make main'); ?></div>
+									<div class="image-status-current" style="display: none;"><?php echo $this->translate('Main'); ?></div>
+								<?php }*/ ?>
+							<?php }else { ?>
+								<img style="display: none;" src="" alt="" />
+								<div class="image-status" style="display: none;"><?php echo $this->translate('Make main'); ?></div>
+								<div class="image-status-current" style="display: none;"><?php echo $this->translate('Main'); ?></div>
+							<?php } ?>
+					  	</div>
+					  	<div class="all-images">
+					  		<?php $r=0; foreach($this->images as $image) { $r++; ?>
+					  			<div <?php if($r == 1) echo 'class="current"'; ?>>
+					  				<a class="remove"></a>
+					  				<img src="<?php echo $image['thumb']; ?>" alt="" />
+					  				<input class="image_value" type="hidden" name="image[]" value="<?php echo $image['image']; ?>" />
+					  				<input class="image_id" type="hidden" name="image_id[]" value="<?php echo $image['image_id']; ?>" />
+					  				<input class="big" type="hidden" name="big[]" value="<?php echo $image['big']; ?>" />
+					  				<div class="new_current <?php if($image['image'] == $this->main_image) echo 'new_main'; ?>"><div id="<?php echo $image['image']; ?>"></div><span><?php echo $this->translate('Main'); ?></span></div>
+					  			</div>
+					  		<?php } ?>
+					  		<div id="addImage" class="empty"></div>
+					  	</div>
+					  	<input type="hidden" name="main_image" value="<?php echo $this->main_image; ?>" />
+						  <script type="text/javascript">
+						  	$(document).ready(function() {
+						  		$('.all-images .remove').live('click', function() {
+						  			var remove_button = this;
+						  			if(confirm('<?php echo $this->translate('ImageDelete'); ?>')) {
+						  				$.ajax({
+						  					url: '<?php echo $this->baseUrl('profile/removeimage/image_id/') ?>' + $(this).siblings('.image_id').val(),
+						  					data: {},
+						  					beforeSend: function() {
+						  						$(remove_button).siblings('img').remove();
+						  						$(remove_button).parent().addClass('temp-image-uploading');
+						  					},
+						  					success: function(output) {
+						  						if($(remove_button).siblings().hasClass('new_main')) {
+									  				if($(remove_button).parent().hasClass('current')) {
+									  					$(remove_button).parent().remove();
+									  					$('.all-images > div:first-child img').click();
+									  				}else {
+									  					$(remove_button).parent().remove();
+									  				}
+									  				$('.all-images div:first-child .new_current div').click();
+									  			}else {
+									  				if($(remove_button).parent().hasClass('current')) {
+									  					$(remove_button).parent().remove();
+									  					$('.all-images > div:first-child img').click();
+									  				}else {
+									  					$(remove_button).parent().remove();
+									  				}
+									  			}
+									  			
+									  			if($('.all-images > div:first-child').hasClass('empty')) {
+									  				$('.main_image .text_empty').show();
+									  				$('.main_image img').attr('src', '');
+									  				$('.main_image img').hide();
+									  			}
+						  					}
+						  				});
+						  			}
+						  		});
+						  		
+						  		$('.all-images > div img').live('click', function() {
+						  			
+							  		$('.main_image img').attr('src', $(this).siblings('.big').val());
+							  		$('.all-images > div').removeClass('current');
+							  		$(this).parent().addClass('current');
+							  		
+						  		});
+						  		
+						  		$('.new_current div').live('click', function() {
+						  			parent = $(this).parent();
+						  			$.ajax({
+						  				url: '<?php echo $this->baseUrl('profile/setmainimage/') ?>',
+						  				type: 'post',
+						  				data: {image: $(this).attr('id')},
+						  				beforeSend: function() {
+						  					
+						  				},
+						  				success: function(output) {
+									  		$('.all-images div div').removeClass('new_main');
+									  		$(parent).addClass('new_main');
+						  				}
+						  			});
+						  		});
+						  	});
+						  	
+						  	new AjaxUpload('#addImage', {
+								action: '/filemanager/upload',
+								name: 'imagefile',
+								autoSubmit: false,
+								responseType: 'json',
+								onChange: function(file, extension) {
+										this.submit();
+								},
+								onSubmit: function(file, extension) {
+										$('.all-images .empty').before('<div class="temp-image-uploading"><a class="remove"></a><img src="" alt="" /><input class="image_value" type="hidden" name="image[]" value="" /><input class="image_id" type="hidden" name="image_id[]" value="" /><input class="big" type="hidden" name="big[]" value="" /><div class="new_current"><div></div><span><?php echo $this->translate('Main'); ?></span></div></div>');
+								},
+								onComplete: function(file, json) {
+										if (json.success) {
+											$('.temp-image-uploading img').attr('src', json.image_small);
+											$('.temp-image-uploading .image_value').val(json.filename);
+											$('.temp-image-uploading .new_current div').attr('id', json.filename);
+											$('.temp-image-uploading .big').val(json.image_big);
+											$('.temp-image-uploading .image_id').val(json.image_id);
+											if($('.all-images > div:first-child').hasClass('temp-image-uploading')) {
+							  					$('.main_image .text_empty').hide();
+							  					$('.main_image img').attr('src', json.image_big);
+							  					$('.main_image img').show();
+							  					$('.all-images > div:first-child .new_current').addClass('new_main');
+											}
+											$('.all-images div').removeClass('temp-image-uploading');
+											alert(json.success);
+										}
+										if (json.error) {
+											$('.temp-image-uploading').remove();
+											alert(json.error);
+										}
+								}
+							});
+						  </script>
+                   	</div>
+                   	<!-- END Profile Photos -->
+                    
+                   	<!-- Profile Info -->
+                    <div class="profileInfo">
+                    	
+						<?php echo $this->form; ?>
+                        
+                    </div>
+                    <!-- END Profile Info -->
+                    
+                </div>
+                <!-- END Right Column -->
+               <div class="clear"></div>
+            </div>

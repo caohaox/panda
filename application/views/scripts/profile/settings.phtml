@@ -1,0 +1,29 @@
+<div class="content">
+            	<?php echo $this->action('menu', 'widgets'); ?>
+                
+                <div class="clear"></div>
+                
+                <!-- Left Column -->
+                <div class="left">  
+                    <?php echo $this->action('accountmenu', 'widgets'); ?>
+                    
+                    <?php echo $this->action('notification', 'widgets'); ?>
+                </div>
+                <!-- END Left Column -->
+                
+                <!-- Right Column -->
+                <div class="right">
+                	<h1><?php echo $this->translate('My settings'); ?></h1>
+
+                   	<!-- Profile Info -->
+                    <div class="profile_settings acc-content">
+                    	
+						<?php echo $this->form; ?>
+                        
+                    </div>
+                    <!-- END Profile Info -->
+                    
+                </div>
+                <!-- END Right Column -->
+               <div class="clear"></div>
+            </div>

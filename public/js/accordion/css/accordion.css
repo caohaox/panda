@@ -1,0 +1,7 @@
+#acc {width:358px; list-style:none; margin:0; padding: 0;}
+#acc h3 {width:358px; cursor:pointer;}
+#acc .acc-section {overflow:hidden; height: 0;}
+#acc li:first-of-type .acc-section {
+	height: auto;
+}
+#acc .acc-content {width:358px; font-size: 12.5px; line-height: 20px; margin: 0 0 12px 0;}

@@ -1,0 +1,30 @@
+<?php if ($this->pageCount > 1): ?>
+<div class="navigation">
+
+
+<?php if (isset($this->previous)): ?>
+  <a class="navigation back2" href="<?php echo $this->url(array('page' => $this->previous)); ?>"><?php echo $this->translate('back'); ?></a> |
+<?php else: ?>
+  <a class="navigation noPointer"><?php echo $this->translate('back'); ?></a>
+<?php endif; ?>
+
+<?php foreach ($this->pagesInRange as $page): ?>
+  <?php if ($page != $this->current): ?>
+    <a class="page" href="<?php echo $this->url(array('page' => $page)); ?>">
+        <?php echo $page; ?>
+    </a>
+  <?php else: ?>
+    <b>
+        <?php echo $page; ?>
+    </b>
+  <?php endif; ?>
+<?php endforeach; ?>
+
+<?php if (isset($this->next)): ?>
+  <a class="navigation back" href="<?php echo $this->url(array('page' => $this->next)); ?>"><?php echo $this->translate('next'); ?></a>
+<?php else: ?>
+  <a class="navigation back noPointer"><?php echo $this->translate('next'); ?></a>
+<?php endif; ?>
+
+</div>
+<?php endif; ?>

@@ -1,0 +1,71 @@
+<div class="content">
+            	<?php echo $this->action('menu', 'widgets'); ?>
+                
+                <div class="clear"></div>
+                
+                <!-- Left Column -->
+                <div class="left">  
+                    <?php echo $this->action('accountmenu', 'widgets'); ?>
+                    
+                    <?php echo $this->action('notification', 'widgets'); ?>
+                </div>
+                <!-- END Left Column -->
+                
+                <!-- Right Column -->
+                <div class="right">
+                	<h1><?php echo $this->name; ?><?php if($this->status) echo '<span class="h1_right">' . $this->translate('online') . '</span>'; ?></h1>
+                    
+                    <!-- Profile Photos -->
+                    <div class="profilePhotosBlock">
+                        <div class="profilePhotos">
+                            <ul id="pikame" class="jcarousel-skin-pika">
+                            	<?php foreach($this->images as $image) { ?>
+                                	<li><a href="<?php echo $image['big']; ?>"><img src="<?php echo $image['little']; ?>" ref="<?php echo $image['middle']; ?>" alt="" /></a></li>
+								<?php } ?>
+                            </ul>
+                        </div>
+                        
+                        <?php if(!$this->areFriends) { ?>
+                        <div class="c">
+                        	<a id="addFriend" onclick="setFriendship();" class="button2"><span><?php echo $this->translate('Add to friends'); ?></span></a>
+                       
+                        <script type="text/javascript">
+                        	function setFriendship() {
+                        		$.ajax({
+                        			url: '<?php echo $this->baseUrl('friends/set/user_id/'. $this->user_id) ?>',
+                        			success: function(output) {
+                        				showReqSend();
+                        				$('#addFriend').html('<?php echo $this->translate('Friendship request sent'); ?>');
+                        				$('#addFriend').attr('onclick', '');
+                        				$('#addFriend').removeClass('button2');
+                        				$('#addFriend').addClass('no_pointer');
+                        				$('#addFriend').addClass('tiny-button');
+                        			}
+                        		});
+                        	}
+                        </script>
+                        	<a class="button2a" style="margin-top: 10px;"><span><?php echo $this->translate('Write'); ?></span></a>
+                        </div>
+                        <?php }elseif($this->areFriends === 'notConfirmed') { ?>
+                        	<a class="tiny-button no_pointer"><?php echo $this->translate('Friendship request sent'); ?></a>
+                        	<div class="c">
+                        		<a class="button2a"><span><?php echo $this->translate('Write'); ?></span></a>
+                        	</div>
+                        <?php }elseif($this->areFriends === 'notConfirmedByYou') { ?>
+                        	<div class="c">
+                        		<a class="button2" href="<?php echo $this->baseUrl('friends/accept/user_id/' . $this->user_id); ?>"><span><?php echo $this->translate('Add to friends'); ?></span></a>
+                        		<a class="button2a"><span><?php echo $this->translate('Write'); ?></span></a>
+                        	</div>
+                        <?php }else { ?>
+                        	<div class="c">
+                        		<a class="button2" href="<?php echo $this->baseUrl('chat/chat/user/' . $this->user_id); ?>"><span><?php echo $this->translate('Write'); ?></span></a>
+                        	</div>
+                        <?php } ?>
+                   	</div>
+                   	<!-- END Profile Photos -->
+                    
+                    <?php echo $this->action('profileinfo', 'widgets'); ?>
+                </div>
+                <!-- END Right Column -->
+               <div class="clear"></div>
+            </div>

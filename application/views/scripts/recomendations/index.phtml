@@ -1,0 +1,87 @@
+<div class="content">
+            	<?php echo $this->action('menu', 'widgets'); ?>
+                
+                <div class="clear"></div>
+                
+                <!-- Left Column -->
+                <div class="left">  
+                    <?php echo $this->action('accountmenu', 'widgets'); ?>
+                    
+                    <?php echo $this->action('notification', 'widgets'); ?>
+                </div>
+                <!-- END Left Column -->
+                
+                <!-- Right Column -->
+                <div class="right">
+                	<h1><?php echo $this->translate('My recomendations') ?></h1>
+                    <!-- Recommendations List -->
+                    <!--<?php if(Zend_Controller_Action_HelperBroker::hasHelper('FlashMessenger') && Zend_Controller_Action_HelperBroker::getExistingHelper('FlashMessenger')->getMessages()) { ?>
+					<div class="informer">
+						<?php foreach(Zend_Controller_Action_HelperBroker::getExistingHelper('FlashMessenger')->getMessages() as $message) { ?>
+							<?php echo '<b>' . $message . '</b><br />'; ?>
+						<?php } ?>
+					</div>
+					<?php } ?>-->
+                    <div class="rcLst">
+                    	<?php $i=0; foreach($this->users as $user) { $i++; ?>
+	                    	<div class="rcItem">
+	                        	<div class="rcItemPhoto"><a href="<?php echo $this->baseUrl('user/' . $user['user_id']); ?>"><img src="<?php echo Site_Image::resize($user['image'], 141, 175); ?>" alt="" /></a></div>
+	                            <div class="rcItemT"><?php echo $user['fullname']; ?></div>
+	                            <?php if(Zend_Registry::get('language_id') == 1) { ?>
+	                            	<?php switch(substr($user['age'], -1)) {
+	                            		case 1: $yO = 'год'; break;
+	                            		case 2:
+	                            		case 3:
+	                            		case 4: $yO = 'года'; break;
+	                            		default: $yO = 'лет';
+	                            	}
+	                            	?>
+	                            <?php }else $yO = $this->translate('y/o'); ?>
+	                            <?php echo $user['age'] . $yO; ?><br />
+	                            <?php if($user['region']) echo $user['region'] . '<br />'; ?>
+	                            <?php if($user['sfera']) echo $user['sfera'] . '<br />'; ?>
+	                            <?php if($user['height']) {echo $this->translate('Height') . ': ' . $user['height'] . ' ' . $this->translate('cm') . '<br />';}; ?>
+	                            <?php if($user['weight']) {echo $this->translate('Weight') . ': ' . $user['weight'] . ' ' . $this->translate('kg') . '<br />';}; ?>
+	                            <?php if($user['is_man']) {echo $this->translate('Looking for woman');}else echo $this->translate('Looking for man'); ?>
+	                            <?php if($user['partner_age']) { echo ', ' . $user['partner_age'] . ' ' . $this->translate('y/o'); }; ?>
+	                            
+	                            <div class="rcItemControls">
+	                            	<a id="send<?php echo $user['user_id']; ?>" onclick="sendFrRequest(<?php echo $user['user_id']; ?>);" class="rcCheck"></a>
+	                                <a href="<?php echo $this->baseUrl('recomendations/decline/user_id/' . $user['user_id']); ?>" class="rcRemove"></a>
+	                            </div>
+	                        </div>
+	                        <?php if(!$i%3) { ?>
+	                        	<div class="line"></div>
+	                        <?php } ?>
+                        <?php } ?>
+						<script type="text/javascript">
+	                        function sendFrRequest(user_id) {
+	                                		$.ajax({
+	                                			url: '<?php echo $this->baseUrl('recomendations/accept/user_id/'); ?>' + user_id,
+	                                			beforeSend: function() {
+	                                				$('#send' + user_id).attr('onclick', '');
+	                                			},
+	                                			success: function() {
+	                                				var popUpMethods = new PopUpMethods();
+													popUpMethods.popUpClose();
+													popUpMethods.popUpOpen(jQuery('div.popUpRequestSent'));
+													$('.popUpCloseBtn').addClass('reload');
+	                                				//location = '<?php echo $this->baseUrl('recomendations'); ?>';
+	                                			}
+	                                		});
+	                        }
+	                    </script>
+                        <?php if(!count($this->users)) { ?>
+                        	<?php $date = new Zend_Date(Site_Config::get('next_recomendation_date')); ?>
+                        	<br />
+                        	<h3><?php echo $this->translate('NextRecomendationsTime') . ': ' . $date->toString('dd MMM YYYY'); ?></h3>
+                        <?php } ?>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- END Recommendations List -->
+                   
+                    
+                </div>
+                <!-- END Right Column -->
+               <div class="clear"></div>
+            </div>

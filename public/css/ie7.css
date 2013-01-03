@@ -1,0 +1,103 @@
+.main {
+	overflow-x: hidden;
+}
+.clear {
+	height: 1px;
+}
+
+.slidingBlockFAuth label {
+	top: -12px;
+}
+.slidingBlockFAuth .button, .slidingBlockFAuth .button a {
+	margin: 0;
+}
+.slidingBlockFAuth a {
+	margin-right: 20px;
+}
+.slidingBlockFAuth input {
+	padding-top: 3px;
+	height: 17px;
+}
+.slidingBlockLangMenu {
+	min-height: 111px;
+}
+
+.avatars a {
+	margin: 0;
+	border: 3px solid #ffffff;
+}
+.roundInfo {
+	height: 177px;
+	padding-top: 70px;
+}
+.allinone_carousel_holder {
+	position: relative;
+	top: -19px;
+	margin-bottom: -10px;
+}
+
+.center dl {
+	height: 30px;
+}
+.center dl.shortLabel {
+	height: auto;
+}
+
+.regF dl {
+	height: 44px;
+}
+
+.profileF legend {
+	left: 22px;
+}
+
+#fancybox-content {
+	border: 1px solid #e8e8e8 !important;
+}
+#fancybox-outer {
+	padding: 0;
+}
+
+div.checker span {
+	top: -3px;
+}
+
+.profileMenu {
+	margin-bottom: 0;
+}
+.profileMenu ul.menu{
+	position: relative;
+	top: -23px;
+}
+.profileMenu ul.menu a {
+	height: 46px;
+}
+
+.fancybox-title-over {
+	bottom: 16px !important;
+	left: 16px;
+}
+
+.msgPartnersLst {
+	width: 715px;
+}
+.rcLst{
+	width: 730px;
+	margin-left: -48px;
+}
+
+.searchMsgPartnerBlock .button {
+	margin-top: -28px;
+}
+
+.profilePageTemplate h1, .profilePageTemplate .center h2, .left ul.menu a {
+	height: 22px;
+}
+
+.right {
+	margin-bottom: 30px;
+}
+
+.slidingBlock, .header .button, .center .content .button, .roundInfo .button, .regF .button, .popUpW, .uniformF input[type=text], .uniformF input[type=password], .captchaCode img, .profileFormPageTemplate h1, .profileF fieldset, div.selector, div.uploader span.filename, .profilePageTemplate .center .content, .profileMenu, .notification, .pika-stage, .select-link a, .drop-down-list ul, .glrItemPhoto, .msgPartnersPhotos div, .msgPartnersPhotos span, .rcItemPhoto {
+	behavior: url(../img/template/ie/PIE.htc);
+}

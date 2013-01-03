@@ -1,0 +1,63 @@
+* {margin: 0; padding: 0;}
+html {height: 100%;}
+body {font-size: 13px; font-family: Arial; line-height: 1.4; height: 100%;}
+#wrapper {min-height: 100%;}
+#footer {margin-top: -15px; line-height: 15px; height: 15px; padding-right: 8px; font-size: 10px; text-align: right;}
+a {color: #176cde; text-decoration: none;}
+a:hover {text-decoration: underline; cursor: pointer;}
+img {border: 0 none;}
+th a {font-weight: normal;}
+h1 {margin-bottom: 10px;}
+#hat {background: #e7edf1; border-bottom: 1px solid #b8b8b8; text-align: right; padding-right: 40px;}
+#nav {padding: 10px 20px 5px; text-transform: uppercase; background: #3a85c6;}
+#nav li {display: inline-block; width: 110px; text-align: center; vertical-align: top; list-style-type: none;}
+#nav img {display: block; width: 90px; height: 70px; margin: 0 auto; margin-bottom: 5px;}
+#nav p {line-height: 28px; display: inline;}
+#nav span {display: inline-block; line-height: 1;}
+#nav a {color: #fff; font-size: 12px; display: inline-block;}
+#nav a:hover {text-decoration: none;}
+.nav2 {background: #e7edf1; padding: 0 20px; border-bottom: 1px solid #b8b8b8; border-top: 1px solid #b8b8b8; overflow: hidden;}
+.nav2 ul {float: left; overflow: hidden;}
+.nav2 li {list-style-type: none; float: left; padding-right: 10px; padding-left: 10px; border-right: 1px solid #b8b8b8; border-left: 1px solid #fff; margin: 0 -1px 0 1px;}
+.nav2 li:first-child {border-left: 0 none;}
+.nav2 a {text-transform: uppercase; font-size: 12px;}
+.yellow {color: #eefb23;}
+.login-form {width: 200px; height: 200px; position: absolute; left: 50%; top: 50%; margin-left: -100px; margin-top: -100px; color: #737272;}
+.login-form label {display: block; font-weight: bold; margin-top: 5px;}
+.login-form input {display: block; border: 1px solid #ddd; margin: 5px 0 0; padding: 2px 2px;}
+.login-form #submit {cursor: pointer; background: #e5e5e4; padding: 2px 10px; color: #737272; font-size: 13px; font-family: Arial;}
+
+.errors {font-size: 11px; color: #f00; list-style-type: none; line-height: 1;}
+#content {padding: 20px;}
+#contests {width: 100%; background: #b8b8b8;}
+#contests td {background: #e7edf1; padding: 0 5px;}
+#contests th {background: #e7edf1; padding: 5px;}
+#contests tr:hover td {background: #fff;}
+.button {text-transform: uppercase; background: #3a85c6; display: inline-block; cursor: pointer; color: #fff; -webkit-border-radius: 6px; -moz-border-radius: 6px; -khtml-border-radius: 6px; border-radius: 6px; line-height: 1;}
+.button input {background: none; border: 0 none; color: #fff; cursor: pointer; padding: 3px 10px;}
+.button span {background: none; border: 0 none; color: #fff; cursor: pointer; padding: 3px 10px; display: inline-block;}
+.checkbox {padding-bottom: 30px; padding-top: 20px; width: 960px;}
+.checkbox span {vertical-align: middle;}
+.checkbox label {vertical-align: middle;}
+.choose-image-wrapper {padding-bottom: 30px; border-bottom: 1px dotted #b8b8b8; width: 500px; width: 960px; padding-top: 20px;}
+.choose-image {width: 150px; height: 150px; cursor: pointer; border: 1px solid #b8b8b8;}
+.textarea-elrte {padding-bottom: 30px; width: 960px; border-bottom: 1px dotted #b8b8b8; padding-top: 20px;}
+.textarea {padding-bottom: 30px; width: 960px; padding-top: 20px;}
+.textarea textarea {padding: 5px; border: 1px solid #b8b8b8; width: 500px;}
+.text {padding-bottom: 10px; width: 960px; padding-top: 5px;}
+.text input {padding: 2px 5px; border: 1px solid #b8b8b8; width: 500px;}
+.button {margin: 20px 0;}
+label {font-weight: bold;}
+.current {font-weight: bold;}
+option {padding: 0 5px;}
+.informer {background: #ffffac; text-align: center; padding: 5px; border: 1px solid #b8b8b8; margin-bottom: 15px;}
+.checkboxes input {margin-right: 10px;}
+.m_tab {border: 1px solid #ddd; padding: 10px; width: 600px; position: relative; z-index: 1; display: none;}
+.m_tabs {margin-bottom: -1px; position: relative; z-index: 2; height: 20px;}
+.m_tabs a {display: inline-block; border: 1px solid #ddd; padding: 0 10px; height: 18px; line-height: 18px;}
+.m_tabs a.selected {border-bottom: 1px solid #fff;}
+a.pages {font-weight: bold; cursor: default;}
+a.pages:hover {text-decoration: none;}
+.mail_form input {display: block;}
+.mail_form label {display: block; margin-top: 10px;}
+.mail_form textarea {display: block;}

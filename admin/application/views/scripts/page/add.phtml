@@ -1,0 +1,28 @@
+<?php echo $this->form; ?>
+
+<?php echo $this->enableElRTE();?>
+<?php echo $this->enableElFinder();?>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+		
+		$('.m_tabs a:first-child').addClass('selected');
+		first_id = $('.m_tabs a:first-child').attr('id');
+		$(first_id).show();
+		$(first_id + ' textarea').elrte(opts);
+		//$('#language-1-description').elrte(opts);
+		
+		$('.m_tabs a').click(function() {
+			$('.m_tabs a').removeClass('selected');
+			$(this).addClass('selected');
+			id = $(this).attr('id');
+			
+			$('.m_tab').hide();
+			$(id).show();
+			$(id + ' textarea').elrte(opts);
+		});
+		
+		
+	});
+
+</script>

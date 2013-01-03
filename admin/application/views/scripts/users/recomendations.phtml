@@ -1,0 +1,51 @@
+<h1><?php echo $this->translate('Recommendations for user') . ' ' . $this->current_user['fullname']; ?></h1>
+<table cellpadding="0" cellspacing="1" style="width: 100%; text-align: left;" id="contests">
+	<tr>
+		<th><?php echo $this->translate('User'); ?></th>
+		<th><?php echo $this->translate('Age'); ?></th>
+		<th></th>
+		
+	</tr>
+	<?php foreach($this->recomendations as $data) { ?>
+		<tr>
+			<td><a href="<?php echo $this->baseUrl('users/edit/user_id/') . $data['user_id']; ?>"><?php echo $data['fullname']; ?></a></td>
+			<td><?php echo $data['age']; ?></td>
+			<td><a href="<?php echo $this->baseUrl('users/removerecomendation/recomendation_id/') . $data['recomendation_id'] . '?redirect=users/recomendations/user_id/' . $this->current_user['user_id']; ?>"><?php echo $this->translate('Remove recommendation'); ?></a></td>
+		</tr>
+	<?php } ?>
+</table>
+
+
+<form id="add_recomendation" action="<?php echo $this->baseUrl('users/addrecomendation'); ?>">
+	<input id="addRec" type="text" name="addrec" />
+	<input type="hidden" name="addrec_id" />
+	<input type="hidden" name="user_id" value="<?php echo $this->current_user['user_id']; ?>" />
+	<input type="hidden" name="redirect" value="users/recomendations/user_id/<?php echo $this->current_user['user_id']; ?>" />
+	<a onclick="$('#add_recomendation').submit();" class="button"><span><?php echo $this->translate('Add recommendation'); ?></span></a>
+	<script type="text/javascript">
+		$('input[name=\'addrec\']').autocomplete({
+			delay: 0,
+			source: function(request, response) {
+				$.ajax({
+					url: '<?php echo $this->baseUrl('users/autocomplete/name/'); ?>' +  encodeURIComponent(request.term),
+					dataType: 'json',
+					success: function(json) {		
+						response($.map(json, function(item) {
+							return {
+								label: item.name,
+								value: item.user_id
+							}
+						}));
+					}
+				});
+				
+			}, 
+			select: function(event, ui) {
+				$('input[name=\'addrec_id\']').val(ui.item.value);
+				$('input[name=\'addrec\']').val(ui.item.label);
+
+				return false;
+			}
+		});
+	</script>
+</form>

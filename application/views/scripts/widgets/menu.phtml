@@ -1,0 +1,20 @@
+<!-- Profile Menu -->
+<div class="profileMenu">
+	<ul class="menu">
+		<?php
+			$front = Zend_Controller_Front::getInstance()->getRequest(); 
+			$controllerName = $front->getControllerName();
+			$actionName = $front->getActionName();
+			$pageName = $front->getParam('pageName');
+			$active = 'class="active"'; 
+		?>
+		<li <?php if($controllerName == 'profile') echo $active; ?>><a href="<?php echo $this->baseUrl('profile'); ?>"><?php echo $this->translate('My profile'); ?></a></li>
+		<li <?php if($controllerName == 'account') echo $active; ?>><a href="<?php echo $this->baseUrl('account'); ?>"><?php echo $this->translate('Account'); ?></a></li>
+		<li <?php if($controllerName == 'gallery') echo $active; ?>><a href="<?php echo $this->baseUrl('gallery'); ?>"><?php echo $this->translate('Members gallery'); ?></a></li>
+		<?php if($this->user) { ?>
+		<li <?php if($pageName == 'services') echo $active; ?>><a href="<?php echo $this->baseUrl('services'); ?>"><?php echo $this->translate('Services'); ?></a></li>
+		<li <?php if($pageName == 'information') echo $active; ?>><a href="<?php echo $this->baseUrl('information'); ?>"><?php echo $this->translate('Information'); ?></a></li>
+		<?php } ?>
+	</ul>
+</div>
+<!-- END Profile Menu -->

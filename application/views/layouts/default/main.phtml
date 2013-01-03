@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<?php echo $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8') . PHP_EOL; ?>
+	<?php $this->headTitle()->setSeparator(' - '); ?>
+	<?php echo $this->headTitle('Panda&Bear') . PHP_EOL; ?>
+	<link rel="icon" href="<?php echo $this->baseUrl('img/icon.png'); ?>" />
+	<?php $this->headLink()->prependStylesheet($this->baseUrl('js/jquery.fancybox-1.3.4/css/jquery.fancybox-1.3.4.css')) . PHP_EOL;?>
+	<?php $this->headLink()->prependStylesheet($this->baseUrl('js/allinone-carousel/css/allinone_carousel.css')) . PHP_EOL;?>
+	<?php $this->headLink()->prependStylesheet($this->baseUrl('js/pixelmatrix-uniform/css/uniform.css')) . PHP_EOL;?>
+	<?php $this->headLink()->prependStylesheet($this->baseUrl('js/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css')) . PHP_EOL;?>
+	<?php echo $this->headLink()->prependStylesheet($this->baseUrl('css/styles.css')) . PHP_EOL;?>
+	<?php $this->headScript()->prependFile($this->baseUrl('js/jquery/ui/jquery-ui-1.8.16.custom.min.js')) . PHP_EOL; ?>
+	<?php $this->headScript()->prependFile($this->baseUrl('js/jquery.fancybox-1.3.4/js/jquery.mousewheel-3.0.4.pack.js')) . PHP_EOL; ?>
+	<?php $this->headScript()->prependFile($this->baseUrl('js/jquery.fancybox-1.3.4/js/jquery.fancybox-1.3.4.pack.js')) . PHP_EOL; ?>
+	<?php $this->headScript()->prependFile($this->baseUrl('js/pixelmatrix-uniform/js/jquery.uniform.min.js')) . PHP_EOL; ?>
+	<?php $this->headScript()->prependFile($this->baseUrl('js/allinone-carousel/js/jquery.ui.touch-punch.min.js')) . PHP_EOL; ?>
+	<?php $this->headScript()->prependFile($this->baseUrl('js/allinone-carousel/js/allinone_carousel.js')) . PHP_EOL; ?>
+	<?php $this->headScript()->prependFile($this->baseUrl('js/general.js')) . PHP_EOL; ?>
+	<?php echo $this->headScript()->prependFile($this->baseUrl('js/jquery/jquery-1.7.1.min.js')) . PHP_EOL; ?>
+	<!--[if IE]>
+		<link rel="stylesheet" type="text/css" href="css/all-ie-only.css" />
+	<![endif]-->
+	<!--[if IE 8]>
+		<link rel="stylesheet" type="text/css" href="css/ie8.css" media="screen" />
+	<![endif]-->
+	<!--[if IE 7]>
+		<link rel="stylesheet" type="text/css" href="css/ie7.css" media="screen" />
+	<![endif]-->
+	<!--[if lte IE 6]>
+		<link rel="stylesheet" type="text/css" href="css/ie6.css" media="screen" />
+	<![endif]-->
+<?php
+	$front = Zend_Controller_Front::getInstance()->getRequest(); 
+	$controllerName = $front->getControllerName();
+	$actionName = $front->getActionName();
+	$pageName = $front->getParam('pageName');
+	$active = 'class="active"'; 
+	
+	switch($controllerName) {
+		case 'user': 
+		case 'profile': 
+		case 'chat': 
+		case 'friends': 
+		case 'requests': 
+		case 'recomendations': 
+		case 'gallery': {$additionalClass = 'profilePageTemplate';}break;
+		case 'steps': {$additionalClass = 'profileFormPageTemplate';}break;
+		case 'account': {$additionalClass = 'paymentPageTemplate';}break;
+		default: {$additionalClass = '';}
+	}
+?>
+	<?php if($this->user && ($controllerName != 'chat' || $actionName != 'chat')) { ?>
+		<script type="text/javascript">
+			function imOnline() {
+				$.ajax({
+					url: '<?php echo $this->baseUrl('profile/imonline'); ?>'
+				});
+			}
+			
+			setInterval(imOnline, 60000);
+		</script>
+	<?php } ?>
+</head>
+
+<body class="<?php if(Zend_Registry::get('language_id') == 1) {echo 'RU-languageVersion';}elseif(Zend_Registry::get('language_id') == 3) {echo 'ChN-languageVersion';}else echo 'EN-languageVersion'; ?>">
+	<div class="overlay"></div>
+	<div class="main <?php echo $additionalClass; ?>">
+		<!-- Header -->
+        <div class="header">
+        	<div class="content">
+				<ul class="menu actRMenu">
+					<?php if($this->user) { ?>
+                		<li><a class="bg_none" href="<?php echo $this->baseUrl('login/logout'); ?>"><?php echo $this->translate('Logout'); ?></a></li>
+                	<?php }else { ?>
+                		<li><a rel="slidingBlockFAuth"><?php echo $this->translate('Enter'); ?></a></li>
+                	<?php } ?>
+                    <li><a rel="slidingBlockLangMenu"><?php echo $this->translate('Language'); ?></a></li>
+                </ul>
+            
+				<ul class="menu">
+                	<li><a href="<?php echo $this->baseUrl('about'); ?>"><?php echo $this->translate('About us'); ?></a></li>
+                    <li><a href="<?php echo $this->baseUrl('contact'); ?>"><?php echo $this->translate('Contacts'); ?></a></li>
+                    <li><a href="<?php echo $this->baseUrl('faq'); ?>"><?php echo $this->translate('Questions'); ?></a></li>
+                </ul>
+                
+                <?php echo $this->action('login', 'widgets'); ?>
+                <div class="slidingBlock slidingBlockLangMenu">
+                	<ul id="languages">
+                    	<li><a onclick="language(1);">Русский</a></li>
+                        <li><a onclick="language(2);">English</a></li>
+                        <li><a onclick="language(3);">中文</a></li>
+                    </ul>
+                    <script type="text/javascript">
+                    	function language(language_id) {
+                    		$.ajax({
+                    			url: '<?php echo $this->baseUrl('index/language'); ?>' + '/language_id/' + language_id,
+                    			beforeSend: function() {
+                    				$('#languages a').attr('onclick', '');
+                    			},
+                    			success: function() {
+                    				location.reload();
+                    			}
+                    		});
+                    	};
+                    </script>
+                </div>
+            </div>
+        </div>
+        <!-- END Header -->
+        
+		<!-- General Content -->
+        <div class="center">
+			<a href="<?php echo $this->baseUrl('/'); ?>" title="" class="logo"><span></span></a>
+			
+        	<?php echo $this->layout()->content; ?>
+        	
+        </div>
+        <!-- END General Content -->
+        
+    	<div class="subFooter"></div>
+        
+        <div class="overlayPopUp"></div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+    	<div class="content">
+			<div class="floatR">
+            	© 2012, Panda and Bear
+                <span class="textSeparator"></span>
+            	All rights reserved
+            </div>
+        </div>
+    </div>
+    <!-- END Footer -->
+    <?php if(($controllerName == 'index') && ($actionName == 'index')) { ?>
+    <?php echo $this->action('welcomegentlemens', 'widgets'); ?>
+	<?php echo $this->action('welcomeladies', 'widgets'); ?>
+	<?php echo $this->action('registerladies', 'widgets'); ?>
+	<?php echo $this->action('registergentlemens', 'widgets'); ?>
+	<?php }elseif(($controllerName == 'user') || ($controllerName == 'recomendations')) { ?>
+		<div class="popUpW popUpRequestSent successPopup">
+			<a href="javascript:void(0);" title="Close Window" class="popUpCloseBtn"></a>
+			<h1><?php echo $this->translate('Friendship request sent'); ?></h1>
+			<div class="clear"></div>
+		</div>
+	<?php }elseif($controllerName == 'chat' && $actionName == 'chat') { ?>
+		<div class="popUpW popUpSpamReport">
+			<a href="javascript:void(0);" title="Close Window" class="popUpCloseBtn"></a>
+			<h1><?php echo $this->translate('Report'); ?></h1>
+			<?php echo $this->action('spam', 'widgets'); ?>
+			<div class="clear"></div>
+		</div>
+	<?php } ?>
+</body>
+</html>
+				

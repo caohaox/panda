@@ -1,0 +1,155 @@
+.main { 
+   height: 100%;
+}
+.clear {
+	height: 1px;
+}
+
+.slidingBlock {
+	height: 88px;
+	background: #ad3630;
+}
+.slidingBlockLangMenu {
+	height: 108px;
+}
+.slidingBlockFAuth label {
+	top: -12px;
+	width: 51px;
+}
+.slidingBlockFAuth input {
+	padding-top: 3px;
+	height: 17px;
+	width: 154px;
+}
+.slidingBlockFAuth .button, .slidingBlockFAuth .button a {
+	margin: 0;
+}
+.slidingBlockFAuth a {
+	margin-right: 20px;
+}
+
+.avatars div {
+	background: none;
+}
+.avatars a {
+	border: 3px solid #ffffff;
+}
+
+#mapChina .mapT {
+	background-image: url(../img/template/ie/mapT-en.png);
+}
+.RU-languageVersion #mapChina .mapT {
+	background-image: url(../img/template/ie/mapT-ru.png);
+}
+.ChN-languageVersion #mapChina .mapT {
+	background-image: url(../img/template/ie/mapT-chn.png);
+}
+
+.roundInfo {
+	height: 177px;
+	padding-top: 70px;
+}
+.allinone_carousel_holder {
+	position: relative;
+	top: -19px;
+	margin-bottom: -10px;
+}
+
+.uniformF {
+	position: relative;
+}
+.regF input{
+	width: 285px;
+}
+.regF .captcha input {
+	width: 91px;
+}
+.regF dl {
+	height: 44px;
+}
+
+#fancybox-content {
+	padding: 15px;
+	background: #fff;
+}
+.fancybox-bg {
+	display: block;
+}
+#fancybox-outer {
+	padding: 0;
+	border: 1px solid #e8e8e8;
+}
+
+.profilePhotos {
+	height: 496px;
+}
+
+.profileF legend {
+	left: 22px;
+}
+
+div.checker, .profileF dd div.checker, div.checker input, div.checker span {
+	font-size: 0;
+}
+
+dl {
+	height: 30px;
+}
+dl.shortLabel {
+	height: auto;
+}
+
+.profileMenu {
+	margin-bottom: 0;
+	top: -23px;
+}
+.profileMenu ul.menu{
+	position: relative;
+	top: 0;
+}
+.profileMenu ul.menu a {
+	height: 46px;
+	display: inline-block;
+}
+
+.fancybox-title-over {
+	bottom: 0 !important;
+}
+
+.msgPartnersLst {
+	width: 715px;
+}
+
+.writeMsg .button {
+	top: 130px;
+	bottom: auto;
+}
+
+.msgPartnerInfoTable {
+	position: relative;
+	float: left;
+}
+
+.rcLst{
+	width: 730px;
+	margin-left: -48px;
+}
+
+.searchMsgPartnerBlock .button {
+	margin-top: -28px;
+}
+
+.profilePageTemplate h1, .profilePageTemplate .center h2, .left ul.menu a {
+	height: 22px;
+}
+
+.profileInfo {
+	margin-left: 0;
+}
+
+img.png, .logo, .logo span, .map, .mapBacking, .mapT, .roundInfo, .leftNav, .rightNav, .popUpCloseBtn, .regF .captcha dd a, .steps div, .msgPartnersItemNum, div.uploader span.action {
+	behavior: url(../img/template/ie/iepngfix.htc);
+}
+.slidingBlock, .button, .popUpW, .uniformF input.text, .uniformF input.password, .captchaCode img, .profileFormPageTemplate h1, .profileF fieldset, div.selector, div.uploader span.filename, .profilePageTemplate .center .content, .profileMenu, .notification, .pika-stage, .select-link a, .drop-down-list ul, .glrItemPhoto, .msgPartnersPhotos div, .msgPartnersPhotos span, .rcItemPhoto {
+	behavior: url(../img/template/ie/PIE.htc);
+}

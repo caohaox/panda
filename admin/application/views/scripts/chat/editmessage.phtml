@@ -1,0 +1,7 @@
+<form id="ff" method="post" action="<?php echo $this->baseUrl('chat/editmessage/message_id/') . $this->message_id . '?redirect=' . $this->redirect; ?>">
+	<textarea name="description" cols="30" rows="10">
+		<?php echo $this->description; ?>
+	</textarea>
+	<br />
+	<a class="button" onclick="$('#ff').submit();"><span><?php echo $this->translate('Save'); ?></span></a>
+</form>

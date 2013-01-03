@@ -1,0 +1,43 @@
+<!-- Profile Left Menu -->
+<ul class="menu">
+	<?php
+	$front = Zend_Controller_Front::getInstance()->getRequest(); 
+	$controllerName = $front->getControllerName();
+	$actionName = $front->getActionName(); ?>
+	<?php if($controllerName == 'profile' && $actionName != 'settings') { ?>
+		<li class="active"><a href="<?php echo $this->baseUrl('profile'); ?>"><?php echo $this->my_profile; ?></a></li>
+	<?php }else { ?>
+		<li><a href="<?php echo $this->baseUrl('profile'); ?>"><?php echo $this->my_profile; ?></a></li>
+	<?php } ?>
+	
+	<?php if($controllerName == 'recomendations') { ?>
+		<li class="active"><a href="<?php echo $this->baseUrl('recomendations'); ?>"><?php echo $this->my_recomendations; ?><?php if($this->recomendations) echo ' <span>(' . $this->recomendations . ')</span>'; ?></a></li>
+	<?php }else { ?>
+		<li><a href="<?php echo $this->baseUrl('recomendations'); ?>"><?php echo $this->my_recomendations; ?><?php if($this->recomendations) echo ' <span>(' . $this->recomendations . ')</span>'; ?></a></li>
+	<?php } ?>
+	
+	<?php if($controllerName == 'requests') { ?>
+		<li class="active"><a href="<?php echo $this->baseUrl('requests'); ?>"><?php echo $this->my_requests; ?><?php if($this->requests) echo ' <span>(' . $this->requests . ')</span>'; ?></a></li>
+	<?php }else { ?>
+		<li><a href="<?php echo $this->baseUrl('requests'); ?>"><?php echo $this->my_requests; ?><?php if($this->requests) echo ' <span>(' . $this->requests . ')</span>'; ?></a></li>
+	<?php } ?>
+	
+	<?php if($controllerName == 'friends') { ?>
+		<li class="active"><a href="<?php echo $this->baseUrl('friends'); ?>"><?php echo $this->my_friends; ?></a></li>
+	<?php }else { ?>
+		<li><a href="<?php echo $this->baseUrl('friends'); ?>"><?php echo $this->my_friends; ?></a></li>
+	<?php } ?>
+	
+	<?php if($controllerName == 'chat') { ?>
+		<li class="active"><a href="<?php echo $this->baseUrl('chat'); ?>"><?php echo $this->my_messages; ?><?php if($this->messages) echo ' <span>(' . $this->messages . ')</span>'; ?></a></li>
+	<?php }else { ?>
+		<li><a href="<?php echo $this->baseUrl('chat'); ?>"><?php echo $this->my_messages; ?><?php if($this->messages) echo ' <span>(' . $this->messages . ')</span>'; ?></a></li>
+	<?php } ?>
+	
+	<?php if($controllerName == 'profile' && $actionName == 'settings') { ?>
+		<li class="active"><a href="<?php echo $this->baseUrl('profile/settings'); ?>"><?php echo $this->my_settings; ?></a></li>
+	<?php }else { ?>
+		<li><a href="<?php echo $this->baseUrl('profile/settings'); ?>"><?php echo $this->my_settings; ?></a></li>
+	<?php } ?>
+</ul>
+<!-- END Profile Left Menu -->

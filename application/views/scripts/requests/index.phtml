@@ -1,0 +1,34 @@
+<div class="content">
+            	<?php echo $this->action('menu', 'widgets'); ?>
+                
+                <div class="clear"></div>
+                
+                <!-- Left Column -->
+                <div class="left">
+                
+                    <?php echo $this->action('accountmenu', 'widgets'); ?>
+                    <?php echo $this->action('notification', 'widgets'); ?>
+                </div>
+                <!-- END Left Column -->
+                
+                <!-- Right Column -->
+                <div class="right">
+                	<h1><?php echo $this->translate('My requests'); ?></h1>
+                	
+                	<?php foreach($this->requests as $request) { ?>
+                		<div class="request-image">
+							<a href="<?php echo $this->baseUrl('user/' . $request['user_id']); ?>"><img src="<?php echo Site_Image::resize($request['image'], 100, 100); ?>" alt="" /></a>
+							<a href="<?php echo $this->baseUrl('user/' . $request['user_id']); ?>"><?php echo $request['fullname']; ?></a><br />
+							<div class="buttons_a">
+								<div class="button"><a href="<?php echo $this->baseUrl('friends/decline/user_id/' . $request['user_id']); ?>"><?php echo $this->translate('Decline'); ?></a></div>
+								<div class="button"><a href="<?php echo $this->baseUrl('friends/accept/user_id/' . $request['user_id']); ?>"><?php echo $this->translate('Accept'); ?></a></div>
+							</div>
+							<div style="clear: both;"></div>
+						</div>
+					<?php } ?>
+                </div>
+                <!-- END Right Column -->
+                
+                
+                <div class="clear"></div>
+            </div>

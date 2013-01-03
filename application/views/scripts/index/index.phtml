@@ -1,0 +1,61 @@
+
+            
+<!-- Map -->
+<div class="mapWrapper">
+            	<!--<div class="mapBacking"></div>-->
+            	
+            	<div class="mapBacking mapBackingCh"></div> 
+                <img src="img/template/mapCh.png" style="top: 302px; left: 206px;" />
+                <div class="mapBacking mapBackingR"></div>
+                <img src="img/template/mapR.png" style="top: 9px; left: 5px;" />
+            	
+            	<!--<div class="map">
+                    <img src="img/template/1x1.gif" alt="" title="" width="984" height="645" usemap="#map" />
+                    
+                    <map id="map" name="map">
+                        <area shape="poly" coords="600,643,481,643,79,312,1,252,3,235,45,94,388,0,436,0,633,108,684,123,697,85,768,78,877,153,904,159,981,232,750,391,673,408,672,541,655,592" alt="" />
+                    </map> 
+                </div>-->
+            	<div class="map">
+                    <img src="img/template/1x1.gif" alt="" title="" width="984" height="645" usemap="#Map" />
+                    
+                    <map id="map" name="Map">
+                        <area id="mapRArea" onclick="showWG();" shape="poly" coords="643,410,625,352,582,304,546,329,502,331,447,305,427,317,375,314,337,299,298,271,225,287,159,307,145,346,79,311,57,254,3,245,34,217,34,176,51,151,54,88,388,0,436,0,633,108,684,123,697,85,768,78,877,153,904,159,981,232,750,391,673,408" alt="" />
+                        <area id="mapChArea" onclick="showWW();" shape="poly" coords="643,410,625,352,582,304,546,329,502,331,447,305,427,317,375,314,337,299,270,320,196,369,220,445,274,487,368,496,366,540,401,574,482,592,489,643,576,644,593,637,656,588,673,542,652,464,670,410" alt="" />
+                    </map>    
+                </div>
+                
+                <!-- Map Russia -->
+                <div id="mapRussia">
+                	<div class="mapT" onclick="showWG();"></div>
+                    <div class="avatars">
+                    	<?php foreach($this->women as $woman) { ?>
+                    		<a><img src="<?php echo Site_Image::resize($woman['image'], 80, 80); ?>" alt="" /></a>
+                    	<?php } ?>
+                    </div>
+                </div>
+                <!-- END Map Russia -->
+                
+                <!-- Map China -->
+                <div id="mapChina">
+                	<div class="mapT" onclick="showWW();"></div>
+                    <div class="avatars">
+                    	<?php foreach($this->men as $man) { ?>
+                    		<a><img src="<?php echo Site_Image::resize($man['image'], 80, 80); ?>" alt="" /></a>
+                    	<?php } ?>
+                    </div>
+                </div>
+				<!-- END Map China -->
+
+</div>
+<!-- END Map -->
+
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	if (jQuery('.map').length != 0) {
+		/* Avatars */
+		jQuery('#mapRussia .avatars').randomtip({points:[[77, 150], [401, 62], [598, 193], [771, 123], [205, 52], [260, 165], [537, 79]], pause: 5000, speed: 300, visibleTips: 5});
+		jQuery('#mapChina .avatars').randomtip({points:[[231, 342], [370, 320], [534, 336], [513, 487]], pause: 5000, speed: 300, visibleTips: 3});
+	}
+});
+</script>

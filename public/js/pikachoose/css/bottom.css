@@ -1,0 +1,35 @@
+@import url('base.css');
+	
+/* jCarousel Styles */
+/*if you're not using the carousel you can delete everything below this */
+.jcarousel-skin-pika .jcarousel-container-horizontal {width: 277px; padding: 17px 19px 0 19px; left: -19px;}
+.jcarousel-skin-pika .jcarousel-clip-horizontal {height: 67px; width: 277px; overflow: hidden;}
+.jcarousel-skin-pika .jcarousel-item-horizontal { }
+.jcarousel-next, .jcarousel-prev {
+	position: absolute;
+	top: 15px;
+	width: 19px;
+	height: 67px;
+	cursor: pointer;
+	background: transparent url(../images/jcarousel-nav.gif) no-repeat 0 50%;
+}
+.jcarousel-next {
+	right: 0;
+}
+* html .jcarousel-next {
+	right: -1px;
+}
+.jcarousel-prev {
+	left: 0;
+	background-position: -19px 50%;
+}
+.jcarousel-prev-disabled, .jcarousel-next-disabled {
+	cursor: default;
+}
+.jcarousel-next-disabled {
+	background-position: -38px 50%;
+}
+.jcarousel-prev-disabled {
+	background-position: -57px 50%;
+}
+

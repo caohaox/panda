@@ -1,0 +1,92 @@
+<div class="content">
+            	<?php echo $this->action('menu', 'widgets'); ?>
+                
+                <div class="clear"></div>
+                
+                <!-- Left Column -->
+                <div class="left">
+                
+                    <?php echo $this->action('accountmenu', 'widgets'); ?>
+                    
+                    <?php echo $this->action('notification', 'widgets'); ?>
+                </div>
+                <!-- END Left Column -->
+                
+                <!-- Right Column -->
+                <div class="right">
+                	<h1><?php echo $this->translate('My messages'); ?></h1>
+                    
+                    <!-- Search Partner Form -->
+					<div class="infoBlock searchMsgPartnerBlock uniformF">
+                    	<form>
+                        	<input type="text" name="friend_search" value="<?php echo $this->translate('Start typing the name of a friend'); ?>" />
+                        	<input type="hidden" name="friend_search_id" />
+                            <input type="button" onclick="if($('[name=friend_search_id]').val() != '' && $('[name=friend_search_id]').val() != 0) {location = '<?php echo $this->baseUrl('chat/chat/user/'); ?>' + $('[name=friend_search_id]').val();}" value="<?php echo $this->translate('Write'); ?>" />
+                        </form>
+                        
+                        <div class="clear"></div>
+                    </div>
+                    <!-- END Search Partner Form -->
+                    
+                    <!-- Messages Partners List -->
+                    <div class="msgPartnersLst">
+                    	<?php $i=0; foreach($this->chats as $chat) { $i++; ?>
+	                    	<a href="<?php echo $this->baseUrl('chat/chat/user/' . $chat['user_id']); ?>" class="msgPartnersItem">
+	                            <span class="msgPartnersPhotos">
+	                                <span class="msgPartnersPhotoBtm"><img src="<?php echo Site_Image::resize($this->user->image, 103, 122); ?>" title="" /></span>
+	                                <span class="msgPartnersPhotoTop"><img src="<?php echo Site_Image::resize($chat['image'], 120, 156); ?>" title="" /></span>
+	                            </span>	
+	                            <?php if(isset($this->messages[$chat['user_id']])) { ?>
+	                            	<span class="msgPartnersItemNum"><?php echo $this->messages[$chat['user_id']]['count']; ?></span>
+	                            <?php } ?>
+	                            <span class="msgPartnersItemInfo">
+	                            	<span><?php echo $chat['fullname']; ?></span>
+	                            	<?php if(isset($this->messages[$chat['user_id']])) { ?>
+	                            		<?php $date = new Zend_Date($this->messages[$chat['user_id']]['date_added']); ?>
+	                            		<?php echo $date->toString('dd MMM YYYY HH.mm') ?>
+	                            	<?php } ?>
+	                            </span>
+	                        </a>
+	                        <?php if(!$i%3) { ?>
+	                        	<div class="line"></div>
+	                        <?php } ?>
+                        <?php } ?>
+
+                        <div class="clear"></div>
+                        
+                    </div>
+                    <!-- END Messages Partners List -->
+                    
+                </div>
+                <!-- END Right Column -->
+                <script type="text/javascript">
+                	$('[name="friend_search"]').autocomplete({
+						delay: 0,
+						source: function(request, response) {
+							$.ajax({
+								url: '<?php echo $this->baseUrl('friends/autocomplete/name/'); ?>' +  encodeURIComponent(request.term),
+								dataType: 'json',
+								success: function(json) {
+									if(json == '') {
+										json = [{'user_id': '0', 'fullname': '<?php echo $this->translate('User not found'); ?>'}];
+									}
+									response($.map(json, function(item) {
+										return {
+											label: item.fullname,
+											value: item.user_id
+										}
+									}));
+								}
+							});
+							
+						}, 
+						select: function(event, ui) {
+							$('[name=\'friend_search\']').val(ui.item.label);
+							$('[name=\'friend_search_id\']').val(ui.item.value);
+							
+							return false;
+						}
+					});
+                </script>
+                <div class="clear"></div>
+            </div>

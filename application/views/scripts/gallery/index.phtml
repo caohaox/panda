@@ -1,0 +1,96 @@
+<div class="content">
+            	<?php echo $this->action('menu', 'widgets'); ?>
+                
+                <div class="clear"></div>
+                
+                <!-- Left Column -->
+                <div class="left">
+                
+                    <?php echo $this->action('accountmenu', 'widgets'); ?>
+                    
+                    <?php echo $this->action('notification', 'widgets'); ?>
+                </div>
+                <!-- END Left Column -->
+                
+                <!-- Right Column -->
+                <div class="right">
+                	<h1><?php echo $this->translate('Search parameters'); ?></h1>
+                    
+                    <!-- Search Block -->
+                    <div class="searchBlock">
+                    	<?php foreach($this->profile_options as $profile_option) { ?>
+                        <div class="drop-down-list">
+                            <span class="select-link"><a><?php echo $profile_option['name']; ?><span></span></a></span>
+                            <ul>
+                            	<?php foreach($profile_option['profile_option_values'] as $profile_option_value) { ?>
+                                	<li><a href="<?php echo $profile_option_value['href']; ?>"><?php echo $profile_option_value['name']; ?></a></li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                        <?php } ?>
+                        <div class="clear"></div>
+                        <div class="drop-down-list"><?php echo $this->translate('Age'); ?></div>
+                        <div class="drop-down-list">
+                            <span class="select-link"><a><?php echo $this->translate('From'); ?><span></span></a></span>
+                            <ul>
+                            	<?php foreach($this->ageFrom as $i => $ageUrl) { ?>
+                            		<?php if(!$i) { ?>
+                            			<li><a href="<?php echo $ageUrl; ?>"><?php echo $this->translate('Does not matter'); ?></a></li>
+                            		<?php }else { ?>
+                                	<li><a href="<?php echo $ageUrl; ?>"><?php echo $i; ?></a></li>
+                                	<?php } ?>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                        <div class="drop-down-list">
+                            <span class="select-link"><a><?php echo $this->translate('To'); ?><span></span></a></span>
+                            <ul>
+                            	<?php foreach($this->ageTo as $i => $ageUrl) { ?>
+                            		<?php if(!$i) { ?>
+                            			<li><a href="<?php echo $ageUrl; ?>"><?php echo $this->translate('Does not matter'); ?></a></li>
+                            		<?php }else { ?>
+                                	<li><a href="<?php echo $ageUrl; ?>"><?php echo $i; ?></a></li>
+                               		<?php } ?>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- END Search Block -->
+                    <?php if($this->current_options) { ?>
+                    <h3><?php echo $this->translate('Current parameters'); ?>:</h3>
+	                <ul class="current_params">
+	                    <?php foreach($this->current_options as $current_option_name => $current_option_value_name) { ?>
+	                    	<li>
+	                    		<?php echo '<b>' . $current_option_name . '</b>: ' . $current_option_value_name['value']; ?>
+	                    		&nbsp;&nbsp;&nbsp;<a class="qwt" href="<?php echo $current_option_value_name['remove']; ?>"><img src="<?php echo $this->baseUrl('/img/template/remove.png'); ?>" alt="" /></a>
+	                    	</li>
+	                    <?php } ?>
+	                </ul>
+                    <?php } ?>
+                    <!-- Gallery List -->
+                    <div class="glrLst">
+                    	<?php $i=0; foreach($this->users as $user) { $i++; ?>
+                    		<a href="<?php echo $this->baseUrl('/user/' . $user['user_id']); ?>" class="glrItem">
+	                        	<span class="glrItemPhoto"><img src="<?php echo Site_Image::resize($user['image'], 71, 71); ?>" alt="" title="" /></span>
+	                            <span class="asdf"><?php echo $user['fullname']; ?></span>
+	                        </a>
+	                        <?php if(!$i%8) { ?>
+	                        	 <div class="line"></div>
+	                        <?php } ?>
+                    	<?php } ?>
+                    	<?php if(!count($this->users)) { ?>
+                    		<br />
+                    		<br />
+                    		<b><?php echo $this->translate('No users found'); ?></b>
+                    	<?php } ?>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- END Gallery List -->
+					<?php echo $this->paginationControl($this->users, 'Sliding', 'common/paginator.phtml'); ?>
+                </div>
+                <!-- END Right Column -->
+                
+                
+                <div class="clear"></div>
+            </div>

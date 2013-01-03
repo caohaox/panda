@@ -1,0 +1,24 @@
+.slidingBlockFAuth input {
+	padding-top: 3px;
+	height: 17px;
+}
+
+#fancybox-content {
+	border: 1px solid #e8e8e8 !important;
+}
+#fancybox-outer {
+	padding: 0;
+}
+.fancybox-title-over {
+	bottom: 16px !important;
+	left: 16px;
+}
+
+div.uploader span.filename {
+	display: none;
+}
+
+
+.avatars a img, .slidingBlock, .button, .popUpW, .uniformF input[type=text], .uniformF input[type=password], .captchaCode img, .profileFormPageTemplate h1, .profileF fieldset, div.selector, div.uploader span.filename, .profilePageTemplate .center .content, .profileMenu, .notification, .pika-stage, .select-link a, .drop-down-list ul , .glrItemPhoto, .msgPartnersPhotos div, .msgPartnersPhotos span, .rcItemPhoto {
+	behavior: url(../img/template/ie/PIE.htc);
+}

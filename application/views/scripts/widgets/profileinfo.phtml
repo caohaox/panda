@@ -1,0 +1,131 @@
+					<!-- Profile Info -->
+                    <div class="profileInfo">
+                    	<ul class="acc" id="acc">
+                            <li>
+                                <h3><?php echo $this->translate('Common info'); ?></h3>
+                                <div class="acc-section">
+                                    <div class="acc-content">
+                                        <!-- Info Table -->
+                                        <table>
+                                        	<?php /*<tr>
+                                                <td class="pInfoParamT"><?php echo $this->translate('Telephone'); ?></td>
+                                                <td><?php echo $this->telephone; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pInfoParamT"><?php echo $this->translate('Skype'); ?></td>
+                                                <td><?php echo $this->skype; ?></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="pInfoTableBlockT" colspan="2"><div><?php echo $this->translate('Birth date'); ?></div></td>
+                                            </tr>*/ ?>
+                                            <tr class="bordered">
+                                                <td class="pInfoParamT"><?php echo $this->translate('Birth date'); ?></td>
+                                                <td><?php $date = new Zend_Date($this->birth_date); echo $date->toString('dd MMM YYYY'); ?></td>
+                                            </tr>
+                                            <!--<tr>
+                                            	<td class="pInfoTableBlockT" colspan="2"><div><?php echo $this->translate('Personal information'); ?></div></td>
+                                            </tr>-->
+                                            <?php $bordered = array(Zend_Registry::get('sfera')); ?>
+                                        	<?php if(isset($this->options['step1'])) { ?>
+	                                        	<?php foreach($this->options['step1'] as $option) { ?>
+		                                        	<?php if($option['type'] == 'checkbox') { ?>
+			                                       		<tr <?php if(in_array($option['profile_option_id'], $bordered)) echo 'class="bordered"'; ?>>
+			                                       			<?php if(!isset(${'multi_option' . $option['profile_option_id']})) { ?>
+			                                       				<td class="pInfoParamT"><?php echo $option['option_name']; ?></td>
+			                                       				<?php ${'multi_option' . $option['profile_option_id']} = true; ?>
+			                                       			<?php }else { ?>
+																<td class="pInfoParamT"></td>
+			                                                <?php } ?>
+			                                               	<td><?php echo $option['value_name']; ?></td>
+			                                          	</tr>
+			                                       	<?php }else { ?>
+			                                       		<?php if($option['profile_option_id'] == Zend_Registry::get('education')) { ?>
+			                                       			<tr>
+				                                            	<td class="pInfoTableBlockT" colspan="2"><div><?php echo $this->translate('Education'); ?></div></td>
+				                                            </tr>
+			                                       		<?php } ?>
+			                                            <tr <?php if(in_array($option['profile_option_id'], $bordered)) echo 'class="bordered"'; ?>>
+			                                                <td class="pInfoParamT"><?php echo $option['option_name']; ?></td>
+			                                                <td><?php echo $option['value_name']; ?></td>
+			                                            </tr>
+		                                            <?php } ?>
+	                                            <?php } ?>
+                                            <?php } ?>
+                                            <?php if($this->languages) { ?>
+                                            <tr>
+                                            	<td class="pInfoTableBlockT" colspan="2"><div><?php echo $this->translate('Languages'); ?></div></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pInfoParamT"><?php echo $this->translate('Language / skill'); ?></td>
+                                                <td>
+                                                	<?php foreach($this->languages as $language) { ?>
+                                                		<?php echo $language['language_name'] . ' / ' . $language['skill_name']; ?>
+                                                	<?php } ?>
+                                                </td>
+                                            </tr>
+                                            <?php } ?>
+                                        </table>
+                                        <!-- END Info Table -->
+                                    </div>
+                                </div>
+                            </li><li>
+                                <h3><?php echo $this->translate('Personal information'); ?></h3>
+                                <div class="acc-section">
+                                    <div class="acc-content">
+                                    	<?php if(isset($this->options['step2'])) { ?>
+                                       	<table>
+	                                       <?php foreach($this->options['step2'] as $option) { ?>
+	                                       	<?php if($option['type'] == 'checkbox') { ?>
+	                                       		<tr>
+	                                       			<?php if(!isset(${'multi_option' . $option['profile_option_id']})) { ?>
+	                                       				<td class="pInfoParamT"><?php echo $option['option_name']; ?></td>
+	                                       				<?php ${'multi_option' . $option['profile_option_id']} = true; ?>
+	                                       			<?php }else { ?>
+														<td class="pInfoParamT"></td>
+	                                                <?php } ?>
+	                                               	<td><?php echo $option['value_name']; ?></td>
+	                                          	</tr>
+	                                       	<?php }else { ?>
+	                                           <tr>
+	                                               <td class="pInfoParamT"><?php echo $option['option_name']; ?></td>
+	                                               <td><?php echo $option['value_name']; ?></td>
+	                                           </tr>
+	                                       	<?php } ?>
+	                                       <?php } ?>
+                                       	</table>
+                                       	<?php } ?>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <h3><?php echo $this->translate('Preferences'); ?></h3>
+                                <div class="acc-section">
+                                    <div class="acc-content">
+                                    	<?php if(isset($this->options['step3'])) { ?>
+                                       	<table>
+	                                       <?php foreach($this->options['step3'] as $option) { ?>
+	                                           <?php if($option['type'] == 'checkbox') { ?>
+			                                      <tr>
+			                                       	<?php if(!isset(${'multi_option' . $option['profile_option_id']})) { ?>
+			                                       		<td class="pInfoParamT"><?php echo $option['option_name']; ?></td>
+			                                       		<?php ${'multi_option' . $option['profile_option_id']} = true; ?>
+			                                       	<?php }else { ?>
+														<td class="pInfoParamT"></td>
+			                                        <?php } ?>
+			                                        <td><?php echo $option['value_name']; ?></td>
+			                                      </tr>
+			                                   <?php }else { ?>
+			                                      <tr>
+			                                         <td class="pInfoParamT"><?php echo $option['option_name']; ?></td>
+			                                         <td><?php echo $option['value_name']; ?></td>
+			                                      </tr>
+		                                       <?php } ?>
+	                                       <?php } ?>
+                                       	</table>
+                                       	<?php } ?>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- END Profile Info -->

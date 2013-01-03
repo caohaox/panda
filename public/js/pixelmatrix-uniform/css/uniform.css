@@ -1,0 +1,428 @@
+.uniformF form, .uniformF input, .uniformF select, .uniformF textarea {
+	position: relative;
+	font-size: 14px;
+}
+.regF form, .regF input, .regF select, .regF textarea {
+	font-weight: bold;
+}
+.uniformF input.text, .uniformF input.email, .uniformF input.password, .uniformF textarea {
+	border: 0;
+	background-color: #fef7f7;
+}
+.regF input.text, .regF input.email, .regF input.password, .regF textarea {
+	border: 1px solid #ccbe7a;
+	background-color: #fff;
+}
+.popUpRegFW .regF input.text, .popUpRegFW .regF input.email, .popUpRegFW .regF input.password, .popUpRegFW .regF textarea {
+	border-color: #fff;
+}
+.uniformF input.text, .uniformF input.email, .uniformF input.password {
+	height: 21px;
+	line-height: 21px;
+}
+.regF input.text, .regF input.email, .regF input.password {
+	height: 27px;
+	line-height: 27px;
+}
+.uniformF input[type=text], .uniformF input[type=password] {
+	height: 21px;
+	line-height: 21px;
+	border: 0;
+	background-color: #fef7f7;
+}
+.regF input[type=text], .regF input[type=password] {
+	height: 27px;
+	line-height: 27px;
+	border: 1px solid #ccbe7a;
+	background-color: #fff;
+}
+.popUpRegFW .regF input[type=text], .popUpRegFW .regF input[type=password] {
+	border-color: #fff;
+}
+.uniformF input, .captchaCode img {
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-khtml-border-radius: 4px;
+}
+.infoBlock input[type=text] {
+	height: 26px;
+	line-height: 26px;
+	border: 1px solid #af8d43;
+	text-align: center;
+	color: #504c4c;
+	font-size: 12px;
+	background-color: #fff;
+	width: 257px;
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-khtml-border-radius: 0;
+}
+.infoBlock input.text {
+	height: 26px;
+	line-height: 26px;
+	border: 1px solid #af8d43;
+	text-align: center;
+	color: #504c4c;
+	font-size: 12px;
+	background-color: #fff;
+	width: 257px;
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-khtml-border-radius: 0;
+}
+.uniformF input[type=radio] {
+	position: relative;
+	width: auto;
+	height: auto;
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-khtml-border-radius: 0;
+}
+.uniformF input.radio {
+	position: relative;
+	width: auto;
+	height: auto;
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-khtml-border-radius: 0;
+}
+
+.uniformF select, .uniformF input[type=file], .uniformF input[type=submit], .uniformF input[type=button], .uniformF input[type=checkbox] {
+	height: 21px;
+	opacity: 0;
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	filter: alpha(opacity:0);
+}
+.uniformF select {
+	height: 20px;
+}
+.uniformF input[type=submit], .uniformF input[type=button] {
+	height: 23px;
+}
+.regF input[type=submit], .regF input[type=button] {
+	height: 33px;
+}
+.uniformF textarea.uniform {
+	height: auto;
+}
+.uniformF input[type=checkbox] {
+	width: 13px;
+	height: 12px;
+}
+
+/* Captcha */
+.uniformF .captchaCode {
+	margin-right: 4px;
+}
+.uniformF .captchaCode img {
+	max-height: 21px;
+}
+.regF .captchaCode img {
+	max-height: 28px;
+}
+.regF .captcha input {
+	height: 28px;
+	margin-top: -1px;
+	text-align: center;
+	border: 1px solid #b79736;
+}
+.popUpRegFW .regF .captcha input {
+	height: 27px;
+	border: 0;
+	margin: 0;
+}
+
+/* Select */
+div.selector span {
+	display: block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 20px;
+	height: 20px;
+	overflow: hidden;
+	text-align: center;
+	padding: 0px 22px 0px 2px;
+	cursor: pointer;
+	margin-right: -2px;
+	background: transparent url(../images/select.png) no-repeat bottom right;
+}
+div.selector select {
+	top: 0px;
+	left: 0px;
+	position: absolute;
+	width: 100%;
+	opacity: 0;
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	filter: alpha(opacity:0);
+	height: 19px;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+div.selector {
+	width: 100%;
+	position: relative;
+	line-height: 20px;
+	height: 20px;
+	overflow: hidden;
+	padding-right: 2px;
+	border-radius: 4px 0 0 4px;
+	-moz-border-radius: 4px 0 0 4px;
+	-khtml-border-radius: 4px 0 0 4px;
+	background-color: #fef7f7;
+}
+
+/* Uploader */
+div.uploader, .profileF dd div.uploader {
+	width: 390px;
+	position: relative;
+	cursor: pointer;
+}
+
+div.uploader span.action {
+	width: 85px;
+	height: 20px;
+	text-align: center;
+	color: #000;
+	line-height: 20px;
+	float: left;
+	display: inline-block;
+	overflow: hidden;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 13px;
+	background: transparent url(../images/browseBtn.png) no-repeat top left;
+}
+
+div.uploader span.filename {
+	width: 284px;
+ 	line-height: 21px;
+	height: 21px;
+	background-color: #fef7f7;
+	margin-right: 10px;
+	padding: 0px 3px;
+	float: left;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	cursor: pointer;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-khtml-border-radius: 4px;
+}
+
+div.uploader input, .profileF div.uploader input {
+	width: 383px;
+	max-width: none;
+	opacity: 0;
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	filter: alpha(opacity:0);
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	height: 21px;
+	line-height: 21px;
+	border: none;
+	cursor: pointer;
+	z-index: 10;
+}
+
+div.uploader.disabled span.action {
+	color: #aaa;
+}
+
+div.uploader.disabled span.filename {
+	border-color: #ddd;
+	color: #aaa;
+}
+
+/* Checkbox */
+div.checker, .profileF dd div.checker, div.checker input, div.checker span {
+	width: 13px;
+  	height: 12px;
+}
+div.checker span {
+	position: relative;
+	top: -1px;
+  	background: transparent url(../images/checkbox.png) no-repeat top left;
+}
+@media all and (-webkit-min-device-pixel-ratio:10000),
+not all and (-webkit-min-device-pixel-ratio:0) {
+	div.checker span {
+		top: 0;
+	}
+}
+div.checker span.checked {
+  background-image: url(../images/checkboxChecked.png);
+}
+
+/* Submit */
+.button {
+	position: relative;
+	height: 33px;
+	cursor: pointer;
+	padding: 0 37px;
+	text-transform: uppercase;
+	text-align: center;
+	line-height: 34px;
+	font-size: 14px;
+	font-weight: bold;
+	text-shadow: 1px 1px 5px #0d0101;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	-moz-box-shadow: 1px 2px 5px #562b25;
+	-webkit-box-shadow: 1px 2px 5px #562b25;
+	box-shadow: 1px 2px 5px #562b25;
+	background: transparent url(../images/btnRedBG.png) repeat-x top left;
+}
+.button, .button a, .button a:visited, .button a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+.button a {
+	display: block;
+}
+div.button input {
+	opacity: 0;
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	filter: alpha(opacity:0);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	height: 33px;
+	line-height: 33px;
+}
+.slidingBlockFAuth .button {
+	height: 24px;
+	padding: 0;
+	width: 72px;
+	text-transform: none;
+	line-height: 24px;
+	font-size: 12px;
+	font-weight: normal;
+	text-shadow: 1px 1px 1px #ffffff;
+	margin-left: 20px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	-moz-box-shadow: 1px 1px 3px #631f1d;
+	-webkit-box-shadow: 1px 1px 3px #631f1d;
+	box-shadow: 1px 1px 3px #631f1d;
+	background: transparent url(../images/btnBG.png) repeat-x 0 -42px;
+}
+.slidingBlockFAuth .button a {
+	font-size: 12px;
+}
+.slidingBlockFAuth .button a, .slidingBlockFAuth a.button, .slidingBlockFAuth .button a:visited, .slidingBlockFAuth .button a:hover {
+	color: #000;
+	text-decoration: none;
+}
+
+.roundInfo .button {
+	height: 41px;
+	padding: 0 42px;
+	line-height: 41px;
+	font-size: 17.54px;
+	text-shadow: 1px 1px 5px #000703;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-khtml-border-radius: 8px;
+	background: transparent url(../images/btnBG.png) repeat-x top left;
+}
+
+.popUpRegFW .button {
+	color: #840303;
+	text-shadow: 0 0 0 #840303;
+	background: transparent url(../images/btnRegFW.png) repeat-x top left;
+}
+
+.profileF .button {
+	float: left;
+	text-transform: none;
+	font-size: 15px;
+	text-shadow: 0 0 0 #840303;
+	padding: 0 29px;
+	margin: 0 7px;
+	background: transparent url(../images/btnProfileFBG.png) repeat-x top left;
+}
+.profileF .fControls {
+	margin: 30px auto -7px 240px;
+	height: 40px;
+	overflow: hidden;
+}
+.profileF .personalInfoFieldSet .fControls, .profileF .partnerInfoFieldSet .fControls {
+	margin-left: 199px;
+}
+.profileF .repeatableF .button {
+	height: 20px;
+	line-height: 20px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	-moz-box-shadow: 0 0 0 #562b25;
+	-webkit-box-shadow: 0 0 0 #562b25;
+	box-shadow: 0 0 0 #562b25;
+	font-size: 13px;
+	padding: 0 9px;
+	margin: 0 0 5px 0;
+	background: transparent url(../images/btnRepeatableBG.png) repeat-x top left;
+}
+.profileF .button, .profileF .button a, .profileF .button a:visited, .profileF .button a:hover {
+	color: #000;
+}
+.profilePageTemplate .center .button {
+	height: 30px;
+	padding: 0 7px;
+	min-width: 113px;
+	text-transform: none;
+	line-height: 30px;
+	font-weight: normal;
+	text-shadow: 0 0 1px #0d0101;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	-moz-box-shadow: 0 0 0 #562b25;
+	-webkit-box-shadow: 0 0 0 #562b25;
+	box-shadow: 0 0 0 #562b25;
+	background: transparent url(../images/btnProfileBG.png) repeat-x top left;
+}
+
+/* General */
+.selector, 
+.checker, 
+.button,
+.uploader {
+  display: -moz-inline-box;
+  display: inline-block;
+  vertical-align: middle;
+  zoom: 1;
+  *display: inline;
+}
+
+.selector select:focus, .radio input:focus, .checker input:focus, .uploader input:focus {
+  outline: 0;
+}
+
+label.error {
+	font-size: 11px;
+	color: #cc0000;
+	font-weight: normal;
+	width: 200px;
+	margin-top: 1px;
+}
+.slidingBlockFAuth label.error {
+	display: none !important;
+}
+.popUpRegFW label.error {
+	color: #fff;
+}
+
+.acc-content div.selector {border: 1px solid #000; border-radius: 0;}
+.acc-content div.selector span {background: #fff url("../images/select2.png") no-repeat scroll right bottom!important;}

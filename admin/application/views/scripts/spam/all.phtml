@@ -1,0 +1,43 @@
+<table id="contests" cellpadding="0" cellspacing="1" style="width: 100%; text-align: left;">
+	<tr>
+		<th>
+			<?php echo $this->translate('User'); ?>
+		</th>
+		<th>
+			<?php echo $this->translate('Report date'); ?>
+		</th>
+		<th>
+			<?php echo $this->translate('Text'); ?>
+		</th>
+		<th>
+			<?php echo $this->translate('Type'); ?>
+		</th>
+		<th>
+		</th>
+	</tr
+	<?php foreach($this->paginator as $data) { ?>
+		<tr>
+			<td>
+				<a href="<?php echo $this->baseUrl('users/edit/user_id/') . $data['user_id']; ?>"><?php echo $data['full_name']; ?></a>
+			</td>
+			<td>
+				<?php echo $data['date_added']; ?>
+			</td>
+			<td>
+				<?php echo $data['text']; ?>
+			</td>
+			<td>
+				<?php if($data['type'] == 1) {echo $this->translate('Abuse');}else echo $this->translate('Spam'); ?>
+			</td>
+			<td style="text-align: right;">
+				<a href="<?php echo $this->baseUrl('spam/remove/spam_id/') . $data['spam_id']; ?>"><?php echo $this->translate('Remove'); ?></a>
+			</td>
+		</tr>
+	<?php } ?>
+</table>
+
+
+<?php echo $this->paginationControl($this->paginator,
+                                    'Sliding',
+                                    'partials/paginator-control.phtml'); 
+?>

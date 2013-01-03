@@ -1,0 +1,251 @@
+<div class="content">
+            	<?php echo $this->action('menu', 'widgets'); ?>
+                
+                <div class="clear"></div>
+                
+                <!-- Left Column -->
+                <div class="left">
+                
+                    <?php echo $this->action('accountmenu', 'widgets'); ?>
+                    
+                    <?php echo $this->action('notification', 'widgets'); ?>
+                </div>
+                <!-- END Left Column -->
+                
+                <!-- Right Column -->
+                <div class="right">
+                	<h1><?php echo $this->translate('My messages'); ?></h1>
+                    
+                    <!-- Partner Info -->
+                    <div class="infoBlock msgPartnerInfo">
+                    
+                    	<a href="javascript: void(0)" title="" class="closeBtn"></a>
+                    
+                    	<!-- Messages Partner Photo -->
+                    	<div class="msgPartnersPhotos">
+                        	<div class="msgPartnersPhotoBtm"><img src="<?php echo Site_Image::resize($this->user->image, 53, 66); ?>" alt="" title="" /></div>
+                            <div class="msgPartnersPhotoTop"><img src="<?php echo Site_Image::resize($this->partner['image'], 69, 86); ?>" alt="" title="" /></div>
+                        </div>
+                        <!-- END Messages Partner Photo -->
+                        
+                        <div class="msgPartnerName"><?php echo $this->partner['fullname_eng']; ?>, <?php echo $this->partner['age']; ?></div>
+                        
+                        <div class="msgPartnerInfoTable">
+                        	<div><?php echo $this->partner['region']; ?></div>
+                            <div><?php if($this->partner['height']) {echo $this->translate('Height') . ': ' . $this->partner['height'] . ' ' . $this->translate('cm');}; ?></div>
+                            <div><?php if($this->partner['weight']) {echo $this->translate('Weight') . ': ' . $this->partner['weight'] . ' ' . $this->translate('kg');}; ?></div>
+                            <div><?php if($this->partner['is_man']) {echo $this->translate('Looking for woman');}else echo $this->translate('Looking for man'); ?>
+	                            <?php if($this->partner['partner_age']) { echo ', ' . $this->partner['partner_age'] . ' ' . $this->translate('y/o'); }; ?></div>
+                        </div>
+                        
+                        <div class="clear"></div>
+                    </div>
+					<!-- END Partner Info -->
+                    
+                    <!-- Messages List -->
+                    <div class="msgLst">
+                    	<?php foreach($this->messages as $message) { ?>
+                    		<?php if($message['from_user_id'] == $this->user->user_id) { ?>
+		                    	<div class="msgItem selfMsgItem">
+		                        	<div class="msgItemDateTime"><?php echo $message['date']; ?></div>
+		                    		<div class="msgItemAuthor"><?php echo $this->user->name . ' ' . $this->user->lastname; ?></div>
+		                            <div class="msgItemText"><?php echo $message['description']; ?></div>
+		
+									<!--<div class="msgActions">
+		                            	<a onclick="spamReport(<?php echo $message['message_id']; ?>);" title="" class="msgActionsAtt"></a>
+		                                <a href="#" title="" class="msgActionsRemove"></a>
+		                            </div>-->
+		                    	</div>
+                    		<?php }else { ?>
+                    			<div class="msgItem selfMsgItem">
+		                        	<div class="msgItemDateTime"><?php echo $message['date']; ?></div>
+		                    		<div class="msgItemAuthor partner"><?php echo $this->partner['fullname_eng']; ?></div>
+		                            <div class="msgItemText"><?php echo $message['description']; ?></div>
+		
+									<div class="msgActions">
+		                            	<a onclick="spamReport(<?php echo $message['message_id']; ?>);" title="" class="msgActionsAtt"></a>
+		                                <!--<a href="#" title="" class="msgActionsRemove"></a>-->
+		                            </div>
+		                    	</div>
+                    		<?php } ?>
+                        <?php } ?>
+                    	
+                    </div>
+                    <!-- Messages List -->
+                    
+                    <div class="writeMsg uniformF">
+                    	<textarea class="message_textarea your-message" rows="5"></textarea>
+                        <div class="smiles">
+                        	<img src="<?php echo $this->baseUrl('img/smiles/1.gif'); ?>" alt=":)" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/2.gif'); ?>" alt=":o" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/3.gif'); ?>" alt=":D" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/4.gif'); ?>" alt=";)" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/5.gif'); ?>" alt=":p" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/6.gif'); ?>" alt=":cool:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/7.gif'); ?>" alt=":rolleyes:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/8.gif'); ?>" alt=":mad:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/9.gif'); ?>" alt=":eek:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/10.gif'); ?>" alt=":confused:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/11.gif'); ?>" alt=":agree:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/12.gif'); ?>" alt=":angry:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/13.gif'); ?>" alt=":blink:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/14.gif'); ?>" alt=":cray:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/15.gif'); ?>" alt=":dance:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/16.gif'); ?>" alt=":haha:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/17.gif'); ?>" alt=":help:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/18.gif'); ?>" alt=":kissed:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/19.gif'); ?>" alt=":laugh:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/20.gif'); ?>" alt=":zzz:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/21.gif'); ?>" alt=":lol:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/22.gif'); ?>" alt=":mamba:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/23.gif'); ?>" alt=":no:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/24.gif'); ?>" alt=":nono:" />
+
+                        	<img src="<?php echo $this->baseUrl('img/smiles/26.gif'); ?>" alt=":(" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/27.gif'); ?>" alt=":secret:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/28.gif'); ?>" alt=":stop:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/29.gif'); ?>" alt=":thanks:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/30.gif'); ?>" alt=":unsure:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/31.gif'); ?>" alt=":victory:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/32.gif'); ?>" alt=":wacko:" />
+                        	<img src="<?php echo $this->baseUrl('img/smiles/33.gif'); ?>" alt=":yes:" />
+
+                        </div>
+                        <input onclick="sendMessage();" type="button" value="Отправить" />
+                        <script type="text/javascript">
+                        	$(document).ready(function() {
+                        		$('.smiles img').click(function() {
+                        			$('.message_textarea').insertAtCaret($(this).attr('alt'));
+                        		});
+                        	});
+                        </script>
+                    </div>
+                    <script type="text/javascript">
+						function sendMessage() {
+							var message = $('.your-message').val();
+							if(message) {
+								//var tmp = document.createElement("DIV");
+   								//tmp.innerHTML = message;
+   								//message = tmp.textContent||tmp.innerText;
+								$.ajax({
+									url: '<?php echo $this->baseUrl('chat/addmessage'); ?>',
+									type: 'POST',
+									dataType: 'json',
+									data: {partner_id: '<?php echo $this->partner['user_id']; ?>', message: message},
+									beforeSend: function() {
+										$('.your-message').attr('disabled', 'disabled');
+									},
+									success: function(response) {
+										if(response['success']) {
+											$('.your-message').val('');
+											html = '<div class="msgItem selfMsgItem">';
+		                        			html += '<div class="msgItemDateTime">' + response['success'] + '</div>';
+				                    		html += '<div class="msgItemAuthor"><?php echo $this->user->name . ' ' . $this->user->lastname; ?></div>';
+				                            html += '<div class="msgItemText">' + response['message'] + '</div>';
+				
+											//html += '<div class="msgActions">';
+				                           // html += '<a onclick="spamReport(' + response['message_id'] + ');" title="" class="msgActionsAtt"></a>';
+				                            //html += '<a href="#" title="" class="msgActionsRemove"></a>';
+				                            //html += '</div>';
+				                    		//html += '</div>';
+										}
+										$('.msgLst').append(html);
+										$('.your-message').removeAttr('disabled');
+										scrollBottom();
+										
+										
+										jQuery('.msgItem').hover(function() {
+											jQuery(this).find('div.msgActions').fadeIn(200);
+										}, function(){
+											jQuery(this).find('div.msgActions').fadeOut(200);
+										});
+									},
+									error: function() {
+										$('.your-message').removeAttr('disabled');
+									}
+								});
+							}
+						}
+						
+						function getNewMessages(scroll) {
+							$.ajax({
+								url: '<?php echo $this->baseUrl('chat/getnewmessages'); ?>',
+								data: {partner_id: '<?php echo $this->partner['user_id']; ?>'},
+								dataType: 'json',
+								success: function(response) {
+									if(response['messages']) {
+										var ids = [];
+										$.each(response['messages'], function(index, value) {
+											html = '<div class="msgItem selfMsgItem">';
+			                        		html += '<div class="msgItemDateTime">' + value['date'] + '</div>';
+					                    	html += '<div class="msgItemAuthor partner"><?php echo $this->partner['fullname_eng']; ?></div>';
+					                        html += '<div class="msgItemText">' + value['description'] + '</div>';
+					
+											html += '<div class="msgActions">';
+					                        html += '<a onclick="spamReport(' + value['message_id'] + ');" title="" class="msgActionsAtt"></a>';
+					                        //html += '<a href="#" title="" class="msgActionsRemove"></a>';
+					                        html += '</div>';
+					                    	html += '</div>';
+					                    	$('.msgLst').append(html);
+					                    	ids.push(value['message_id']);
+										});
+										setRead(ids);
+										if(scroll) {
+											scrollBottom();
+										}
+									}else if(response['message']) {
+										html = '<div class="msgItem selfMsgItem">';
+		                        		html += '<div class="msgItemDateTime">' + response['message']['date'] + '</div>';
+				                    	html += '<div class="msgItemAuthor partner"><?php echo $this->partner['fullname_eng']; ?></div>';
+				                        html += '<div class="msgItemText">' + response['message']['description'] + '</div>';
+				
+										html += '<div class="msgActions">';
+				                        html += '<a onclick="spamReport(' + response['message']['message_id'] + ');" title="" class="msgActionsAtt"></a>';
+				                        //html += '<a href="#" title="" class="msgActionsRemove"></a>';
+				                        html += '</div>';
+				                    	html += '</div>';
+				                    	$('.msgLst').append(html);
+										setRead(response['message']['message_id']);
+										if(scroll) {
+											scrollBottom();
+										}
+									}
+								}
+							});
+						}
+
+						function scrollBottom() {
+							var height = $('.msgLst')[0].scrollHeight;
+							$('.msgLst').scrollTop(height);
+						}
+						
+						function setRead(message_id) {
+
+							$.ajax({
+								url: '<?php echo $this->baseUrl('chat/setread'); ?>',
+								data: {message_id: message_id},
+							});
+						}
+						
+						$(document).ready(function() {
+							scrollBottom();
+							getNewMessages(1);
+							setInterval('getNewMessages(1)', <?php echo Site_Config::get('chat_update_time') * 1000; ?>);
+						});
+						
+						
+						function spamReport(message_id) {
+							$('.spam_form [name="message_id"]').val(message_id);
+							$('.spam_form').show();
+							var popUpMethods = new PopUpMethods();
+							popUpMethods.popUpClose();
+							popUpMethods.popUpOpen(jQuery('div.popUpSpamReport'));
+							$('html, body').animate({ scrollTop: 0 }, 'slow');
+						}
+					</script>
+                </div>
+                <!-- END Right Column -->
+                
+                
+                <div class="clear"></div>
+            </div>

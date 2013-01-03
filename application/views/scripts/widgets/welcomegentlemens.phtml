@@ -1,0 +1,37 @@
+<?php if(!$this->user) { ?>
+	<!-- Welcome PopUp Window for Gentlemens -->
+    <div class="popUpW popUpWelcomeG">
+    	<!-- Close Button -->
+    	<a href="javascript:void(0);" title="Close Window" class="popUpCloseBtn"></a>
+        <!-- END Close Button -->
+        
+        <!-- Carousel -->
+        <div class="allinone_carousel_holder">
+            <div class="allinone_carousel_sweet">
+                <ul class="allinone_carousel_list">
+                	<?php foreach($this->random_users as $random_user) { ?>
+                    	<li><img src="<?php echo Site_Image::resize($random_user['image'], 256, 195); ?>" alt="" /></li>
+                    <?php } ?>       
+                </ul>                 
+            </div>
+        </div>
+        <!-- END Carousel -->
+        
+        <div class="wlcRightBlock">
+            <div class="roundInfo">
+                <h2><?php echo $this->translate('Registration for Gentlemen'); ?></h2>
+               	<?php echo $this->translate('JOIN to us NOW'); ?>
+                <div class="button"><a class="onclick_register_men" onclick="registerGentlemenForm();"><?php echo $this->translate('Register'); ?></a></div>
+            </div>
+            
+           <!-- Have a registration? <a href="#" title="">Login like user</a>-->
+        </div>
+        
+        <div class="popUpWText">
+            <?php echo $this->translate('GentlemenWelcomeText'); ?>
+        </div>
+        
+        <div class="clear"></div>
+    </div>
+	<!-- END Welcome PopUp Window for Gentlemens -->	
+<?php } ?>

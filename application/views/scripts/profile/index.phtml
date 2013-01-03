@@ -1,0 +1,38 @@
+<div class="content">
+            	<?php echo $this->action('menu', 'widgets'); ?>
+                
+                <div class="clear"></div>
+                
+                <!-- Left Column -->
+                <div class="left">  
+                    <?php echo $this->action('accountmenu', 'widgets'); ?>
+                    
+                    <?php echo $this->action('notification', 'widgets'); ?>
+                </div>
+                <!-- END Left Column -->
+                
+                <!-- Right Column -->
+                <div class="right">
+                	<h1><?php echo $this->user->name . ' ' . $this->user->lastname; ?></h1>
+                    
+                    <!-- Profile Photos -->
+                    <div class="profilePhotosBlock">
+                        <div class="profilePhotos">
+                            <ul id="pikame" class="jcarousel-skin-pika">
+                            	<?php foreach($this->images as $image) { ?>
+                                	<li><a href="<?php echo $image['big']; ?>"><img src="<?php echo $image['little']; ?>" ref="<?php echo $image['middle']; ?>" alt="" /></a></li>
+								<?php } ?>
+                            </ul>
+                        </div>
+                        <div class="c">
+                        	<a href="<?php echo $this->baseUrl('/profile/edit') ; ?>" style="background: #DFC36C; display: block; line-height: 23px; color: #800000; font-weight: bold; text-decoration: none;"><span><?php echo $this->translate('Edit profile'); ?></span></a>
+                        </div>
+                   	</div>
+                   	<!-- END Profile Photos -->
+                    
+                   	<?php echo $this->action('profileinfo', 'widgets'); ?>
+                    
+                </div>
+                <!-- END Right Column -->
+               <div class="clear"></div>
+            </div>

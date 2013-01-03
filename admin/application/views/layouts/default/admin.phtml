@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<?php echo $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8') . PHP_EOL; ?>
+	<?php $this->headTitle()->setSeparator(' - '); ?>
+	<?php echo $this->headTitle('PANDA ADMIN') . PHP_EOL; ?>
+	<link rel="icon" href="<?php echo $this->baseUrl('img/icon.png'); ?>" />
+	<?php $this->headLink()->prependStylesheet($this->baseUrl('js/ui/themes/ui-lightness/ui.all.css')) . PHP_EOL;?>
+	<?php $this->headLink()->prependStylesheet($this->baseUrl('/js/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css')) . PHP_EOL;?>
+	<?php echo $this->headLink()->prependStylesheet($this->baseUrl('css/style.css')) . PHP_EOL;?>
+	
+	<?php $this->headScript()->appendFile($this->baseUrl('js/ui/jquery-ui-1.8.16.custom.min.js')) . PHP_EOL; ?>
+	<?php echo $this->headScript()->prependFile($this->baseUrl('js/jquery-1.7.1.min.js')) . PHP_EOL; ?>
+</head>
+<body>
+<div id="wrapper">
+	<?php if($this->admin) { ?>
+	<div id="hat">
+		<select onchange="language($(this).val());">
+			<?php if(Zend_Registry::get('language_id') == 1) { ?>
+				<option value="1" selected="selected">Русский</option>
+			<?php }else { ?>
+				<option value="1">Русский</option>
+			<?php } ?>
+			<?php if(Zend_Registry::get('language_id') == 2) { ?>
+				<option value="2" selected="selected">English</option>
+			<?php }else { ?>
+				<option value="2">English</option>
+			<?php } ?>
+			<?php if(Zend_Registry::get('language_id') == 3) { ?>
+				<option value="3" selected="selected">中文</option>
+			<?php }else { ?>
+				<option value="3">中文</option>
+			<?php } ?>
+		</select>
+		<script type="text/javascript">
+            function language(language_id) {
+                $.ajax({
+                    url: '<?php echo $this->baseUrl('index/language'); ?>' + '/language_id/' + language_id,
+                    beforeSend: function() {
+                    	
+                    },
+                    success: function() {
+                    	location.reload();
+                    }
+                });
+            };
+        </script>
+		<span><?php echo $this->translate('You are logged in as'); ?>: <?php echo $this->admin->name . ' (' . $this->admin->login . ') '; ?></span><a href="<?php echo $this->baseUrl('login/logout'); ?>"><?php echo $this->translate('Logout'); ?></a>
+	</div>
+	<ul id="nav">
+		<?php $front = Zend_Controller_Front::getInstance()->getRequest(); 
+		 $controllerName = $front->getControllerName();
+		 $actionName = $front->getActionName(); ?>
+		<li>
+			<a href="<?php echo $this->baseUrl('page/all'); ?>">
+				<img src="<?php echo $this->baseUrl('img/template/pages.png'); ?>" alt="" />
+				<p>
+					<?php if($controllerName == 'page') { ?>
+						<span class="yellow"><b><?php echo $this->translate('Static pages'); ?></b></span>
+					<?php }else { ?>
+						<span><?php echo $this->translate('Static pages'); ?></span>
+					<?php } ?>
+				</p>
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo $this->baseUrl('users/all'); ?>">
+				<img src="<?php echo $this->baseUrl('img/template/user2.png'); ?>" alt="" />
+				<p>
+					<?php if($controllerName == 'users') { ?>
+						<span class="yellow"><b><?php echo $this->translate('Users'); ?></b></span>
+					<?php }else { ?>
+						<span><?php echo $this->translate('Users'); ?></span>
+					<?php } ?>
+				</p>	
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo $this->baseUrl('options/all'); ?>">
+				<img src="<?php echo $this->baseUrl('img/template/options.png'); ?>" alt="" />
+				<p>
+					<?php if($controllerName == 'options') { ?>
+						<span class="yellow"><b><?php echo $this->translate('Profile options'); ?></b></span>
+					<?php }else { ?>
+						<span><?php echo $this->translate('Profile options'); ?></span>
+					<?php } ?>
+				</p>	
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo $this->baseUrl('settings'); ?>">
+			<img src="<?php echo $this->baseUrl('img/template/system.png'); ?>" alt="" />
+				<p>
+					<?php if($controllerName == 'settings') { ?>
+						<span class="yellow"><b><?php echo $this->translate('Settings'); ?></b></span>
+					<?php }else { ?>
+						<span><?php echo $this->translate('Settings'); ?></span>
+					<?php } ?>
+				</p>
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo $this->baseUrl('spam/all'); ?>">
+			<img src="<?php echo $this->baseUrl('/'); ?>" alt="" />
+				<p>
+					<?php if($controllerName == 'spam') { ?>
+						<span class="yellow"><b><?php echo $this->translate('Spam reports'); ?></b></span>
+					<?php }else { ?>
+						<span><?php echo $this->translate('Spam reports'); ?></span>
+					<?php } ?>
+				</p>
+			</a>
+		</li>
+	</ul>
+	<div class="nav2">
+	<ul>
+		<?php switch($controllerName) { 
+			case 'page': { ?>
+				<li>
+					<a <?php if($actionName == 'all') {echo 'class="current"';}; ?> href="<?php echo $this->baseUrl('page/all'); ?>"><?php echo $this->translate('All pages'); ?></a>
+				</li>
+				<li>
+					<a <?php if($actionName == 'add') {echo 'class="current"';}; ?> href="<?php echo $this->baseUrl('page/add'); ?>"><?php echo $this->translate('Add page'); ?></a>
+				</li>
+			<?php }break; ?>
+			<?php case 'users': { ?>
+				<li>
+					<a <?php if($actionName == 'all') {echo 'class="current"';}; ?> href="<?php echo $this->baseUrl('users/all'); ?>"><?php echo $this->translate('All users'); ?></a>
+				</li>
+			<?php }break; ?>
+			<?php case 'options': { ?>
+				<li>
+					<a <?php if($actionName == 'all') {echo 'class="current"';}; ?> href="<?php echo $this->baseUrl('options/all'); ?>"><?php echo $this->translate('All options'); ?></a>
+				</li>
+				<li>
+					<a <?php if($actionName == 'add') {echo 'class="current"';}; ?> href="<?php echo $this->baseUrl('options/add'); ?>"><?php echo $this->translate('Add option'); ?></a>
+				</li>
+			<?php }break; ?>
+			<?php case 'settings': { ?>
+				<li>
+					<a <?php if($actionName == 'index') {echo 'class="current"';}; ?> href="<?php echo $this->baseUrl('settings'); ?>"><?php echo $this->translate('All settings'); ?></a>
+				</li>
+			<?php }break; ?>
+		<?php } ?>
+	</ul>
+	</div>
+	<?php } ?>
+	<div id="content">
+		<?php if(Zend_Controller_Action_HelperBroker::hasHelper('FlashMessenger') && Zend_Controller_Action_HelperBroker::getExistingHelper('FlashMessenger')->getMessages()) { ?>
+		<div class="informer">
+			<?php foreach(Zend_Controller_Action_HelperBroker::getExistingHelper('FlashMessenger')->getMessages() as $message) { ?>
+				<?php echo '<b>' . $message . '</b><br />'; ?>
+			<?php } ?>
+		</div>
+		<?php } ?>
+		<?php echo $this->layout()->content; ?>
+	</div>
+</div><!-- wrapper -->
+<div id="footer">
+	Сделал <a href="mailto:derika55@mail.ru">roike</a>
+</div>
+</body>
+</html>

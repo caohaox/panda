@@ -1,0 +1,53 @@
+<table cellpadding="0" cellspacing="1" style="width: 100%; text-align: left;" id="contests">
+	<tr>
+		<th>
+			<?php echo $this->translate('Active'); ?>
+		</th>
+		<th>
+			<?php echo $this->translate('SEO url'); ?>
+		</th>
+		<th>
+			<?php echo $this->translate('Title'); ?>
+		</th>
+		<th>
+		</th>
+		<th>
+		</th>
+	</tr
+	<?php foreach($this->paginator as $data) { ?>
+		<tr>
+			<td>
+				<?php if($data['status']) echo $this->translate('Yes'); ?>
+			</td>
+			<td>
+				<?php echo $data['seo_url']; ?>
+			</td>
+			<td>
+				<?php echo $data['title']; ?>
+			</td>
+			<td style="text-align: right;" class="remove">
+				<?php if($data['page_id'] != 7) { ?> 
+				<a id="<?php echo $this->baseUrl('page/remove/page_id/') . $data['page_id']; ?>"><?php echo $this->translate('Remove'); ?></a>
+				<?php } ?>
+			</td>
+			<td style="text-align: right;">
+				<a href="<?php echo $this->baseUrl('page/edit/page_id/') . $data['page_id']; ?>"><?php echo $this->translate('Edit'); ?></a>
+			</td>
+		</tr>
+	<?php } ?>
+</table>
+<script type="text/javascript">
+	$('.remove a').click(function () {
+		if (!confirm('<?php echo $this->translate('Do you really want to delete the page?'); ?>')) {
+			return false;
+		}else {
+			var id = $(this).attr('id');
+			window.location = id;
+		}
+	});
+</script>
+
+<?php echo $this->paginationControl($this->paginator,
+                                    'Sliding',
+                                    'partials/paginator-control.phtml'); 
+?>

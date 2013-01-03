@@ -1,0 +1,24 @@
+<?php if($this->user) { ?>
+<div class="content pp">
+            	<?php echo $this->action('menu', 'widgets'); ?>
+                
+                <div class="clear"></div>
+                
+                <!-- Left Column -->
+                <div class="left">  
+                    <?php echo $this->action('accountmenu', 'widgets'); ?>
+                    
+                    <?php echo $this->action('notification', 'widgets'); ?>
+                </div>
+                <!-- END Left Column -->
+                
+                <!-- Right Column -->
+                <div class="right">
+                	<h1><?php echo $this->page['title']; ?></h1>
+					<div><?php echo $this->page['description']; ?></div>         
+					<div class="clear"></div>
+                </div>
+                <!-- END Right Column -->
+               <div class="clear"></div>
+ </div>
+ <?php } ?>

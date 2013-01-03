@@ -1,0 +1,54 @@
+<table cellpadding="0" cellspacing="1" style="width: 100%; text-align: left;" id="contests">
+	<tr>
+		<th>
+			<?php echo $this->translate('Option'); ?>
+		</th>
+		<th>
+			<?php echo $this->translate('Section'); ?>
+		</th>
+		<th>
+			<?php echo $this->translate('Type'); ?>
+		</th>
+		<th>
+			<?php echo $this->translate('For men'); ?>
+		</th>
+		<th>
+			<?php echo $this->translate('For women'); ?>
+		</th>
+		<th>
+			<?php echo $this->translate('Sort order'); ?>
+		</th>
+		<th></th>
+	</tr
+	<?php foreach($this->paginator as $data) { ?>
+		<tr>
+			<td>
+				<?php echo $data['name']; ?>
+			</td>
+			<td>
+				<?php echo $data['section']; ?>
+			</td>
+			<td>
+				<?php echo $data['type']; ?>
+			</td>
+			<td>
+				<?php if($data['for_man']) echo 'Да'; ?>
+			</td>
+			<td>
+				<?php if($data['for_woman']) echo 'Да'; ?>
+			</td>
+			<td><?php echo $data['sort_order']; ?></td>
+			<td>
+				<a href="<?php echo $this->baseUrl('options/edit/profile_option_id/' . $data['profile_option_id']); ?>"><?php echo $this->translate('Edit option'); ?></a> | 
+				<a href="<?php echo $this->baseUrl('options/values/profile_option_id/' . $data['profile_option_id']); ?>"><?php echo $this->translate('Option values'); ?></a> | 
+				<a href="<?php echo $this->baseUrl('options/addvalue/profile_option_id/' . $data['profile_option_id']); ?>"><?php echo $this->translate('Add option value'); ?></a> | 
+				<a onclick="if(confirm('<?php echo $this->translate('Are you sure?'); ?>')) location = '<?php echo $this->baseUrl('options/remove/profile_option_id/' . $data['profile_option_id']); ?>';"><?php echo $this->translate('Remove option'); ?></a>
+			</td>
+		</tr>
+	<?php } ?>
+</table>
+
+<?php echo $this->paginationControl($this->paginator,
+                                    'Sliding',
+                                    'partials/paginator-control.phtml'); 
+?>

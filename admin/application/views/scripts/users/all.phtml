@@ -1,0 +1,98 @@
+<table cellpadding="0" cellspacing="1" style="width: 100%; text-align: left;" id="contests">
+	<tr>
+		<th>
+			<?php if($this->sort == 'email') { ?>
+				<?php if(strtolower($this->order) == 'desc') { ?>
+					<a href="<?php echo $this->sort_email; ?>"><b><?php echo $this->translate('Email'); ?> (v)</b></a>
+				<?php }else { ?>
+					<a href="<?php echo $this->sort_email; ?>"><b><?php echo $this->translate('Email'); ?> (^)</b></a>
+				<?php } ?>
+			<?php }else { ?>
+				<a href="<?php echo $this->sort_email; ?>"><?php echo $this->translate('Email'); ?></a>
+			<?php } ?>
+		</th>
+		<th>
+			<?php if($this->sort == 'name') { ?>
+				<?php if(strtolower($this->order) == 'desc') { ?>
+					<a href="<?php echo $this->sort_name; ?>"><b><?php echo $this->translate('Name'); ?> (v)</b></a>
+				<?php }else { ?>
+					<a href="<?php echo $this->sort_name; ?>"><b><?php echo $this->translate('Name'); ?> (^)</b></a>
+				<?php } ?>
+			<?php }else { ?>
+				<a href="<?php echo $this->sort_name; ?>"><?php echo $this->translate('Name'); ?></a>
+			<?php } ?>
+		</th>
+		
+		
+		<th>
+			<?php if($this->sort == 'status') { ?>
+				<?php if(strtolower($this->order) == 'desc') { ?>
+					<a href="<?php echo $this->sort_status; ?>"><b><?php echo $this->translate('Active'); ?> (v)</b></a>
+				<?php }else { ?>
+					<a href="<?php echo $this->sort_status; ?>"><b><?php echo $this->translate('Active'); ?> (^)</b></a>
+				<?php } ?>
+			<?php }else { ?>
+				<a href="<?php echo $this->sort_status; ?>"><?php echo $this->translate('Active'); ?></a>
+			<?php } ?>
+
+		</th>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th style="text-align: right;">
+		<?php if($this->sort == 'block') { ?>
+			<?php if(strtolower($this->order) == 'desc') { ?>
+				<a href="<?php echo $this->sort_block; ?>"><b><?php echo $this->translate('Block'); ?> (v)</b></a>
+			<?php }else { ?>
+				<a href="<?php echo $this->sort_block; ?>"><b><?php echo $this->translate('Block'); ?> (^)</b></a>
+			<?php } ?>
+		<?php }else { ?>
+			<a href="<?php echo $this->sort_block; ?>"><?php echo $this->translate('Block'); ?></a>
+		<?php } ?>
+		</th>
+		<th>
+		</th>
+		<th>
+		</th>
+	</tr>
+	<?php foreach($this->paginator as $data) { ?>
+		<tr>
+			<td>
+				<?php echo $data['email']; ?>
+			</td>
+			<td>
+				<?php echo $data['name'] . ' ' . $data['lastname']; ?>
+			</td>
+			
+			
+			
+			<td>
+				<?php if($data['status']) echo $this->translate('Yes'); ?>
+			</td>
+			<td><a href="<?php echo $this->baseUrl('mail/send/user_id/') . $data['user_id'] . '?redirect=users/all/page/' . $this->page; ?>"><?php echo $this->translate('Write message'); ?></a></td>
+			<td><a href="<?php echo $this->baseUrl('users/recomendations/user_id/') . $data['user_id']; ?>"><?php echo $this->translate('User recommendations'); ?></a></td>
+			<td><a href="<?php echo $this->baseUrl('users/chats/user_id/') . $data['user_id']; ?>"><?php echo $this->translate('User chats'); ?></a></td>
+			<td style="text-align: right;">
+				<?php if($data['block']) { ?>
+					<span><?php echo $this->translate('Yes'); ?></span>
+				<?php } ?>
+			</td>
+			<td style="text-align: right;">
+				<?php if($data['block']) { ?>
+					<a href="<?php echo $this->baseUrl('users/unblock/user_id/') . $data['user_id'] . $this->url; ?>"><?php echo $this->translate('Unblock'); ?></a>
+				<?php }else { ?>
+					<a href="<?php echo $this->baseUrl('users/block/user_id/') . $data['user_id'] . $this->url; ?>"><?php echo $this->translate('Block'); ?></a>
+				<?php } ?>
+			</td>
+			<td style="text-align: right;">
+				<a href="<?php echo $this->baseUrl('users/edit/user_id/') . $data['user_id'] . $this->url; ?>"><?php echo $this->translate('Edit'); ?></a>
+			</td>
+		</tr>
+	<?php } ?>
+</table>
+
+
+<?php echo $this->paginationControl($this->paginator,
+                                    'Sliding',
+                                    'partials/paginator-control.phtml'); 
+?>
