@@ -1,0 +1,47 @@
+s:1355:"<form id="login_form" name="login_form" enctype="application/x-www-form-urlencoded" action="/login/index" method="post">
+
+				<label for="email">电子邮件</label>
+                
+<input type="text" name="email" id="email" value="">
+		
+
+				<label for="password">密码</label>
+                
+<input type="password" name="password" id="password" value="">
+		
+
+			<a class="forget_href" href="/register/forget">我忘记密码了</a>
+		
+
+            <div class="floatR"><a id="id_login_form" class="button" onclick="submlogin_form();">
+                    进入
+            </a></div>
+            <script type="text/javascript">
+				$(document).keydown(function(e) {
+					if (e.keyCode == 13) {
+						submlogin_form();
+					}
+				});
+				
+				function submlogin_form() {
+					$.ajax({
+						url: '/login/index',
+						type: 'post',
+						dataType: 'json',
+						data: $('[name="login_form"]').serialize(),
+						beforeSend: function() {
+							$('#id_login_form').attr('onclick', '');
+						},
+						success: function(output) {
+							if(output['success']) {
+								location = output['success'];
+							}else {
+								parent = $('[name="login_form"]').parent();
+								$('[name="login_form"]').remove();
+								$(parent).prepend(output['form']);
+							}
+						}
+					});
+				}
+			</script>
+		</form>";
