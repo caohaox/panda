@@ -1,4 +1,4 @@
-s:1357:"<form id="login_form" name="login_form" enctype="application/x-www-form-urlencoded" action="/login/index" method="post">
+s:1363:"<form id="login_form" name="login_form" enctype="application/x-www-form-urlencoded" action="/login/index" method="post">
 
 				<label for="email">Email</label>
                 

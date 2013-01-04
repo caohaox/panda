@@ -129,16 +129,16 @@ $(document).ready(function(){
 		jQuery('.allinone_carousel_sweet').allinone_carousel({
 			skin: 'sweet',
 			width: 738,
-			height: 215,
-			autoPlay: 3,
+			height: 430,
+			autoPlay: 0,
 			resizeImages:true,
 			autoHideBottomNav:false,
 			easing:'easeOutQuad',
-			numberOfVisibleItems:5,
+			numberOfVisibleItems:3,
 			elementsHorizontalSpacing:115,
 			elementsVerticalSpacing:20,
 			verticalAdjustment:0,
-			animationTime:0.5,
+			animationTime:1,
 			showElementTitle: false,
 			showBottomNav: false,
 			showPreviewThumbs: false,
@@ -390,15 +390,19 @@ function addChild(child_id) {
 
 
 function showWG() {
+/*
 	var popUpMethods = new PopUpMethods();
 	popUpMethods.popUpClose();
-	popUpMethods.popUpOpen(jQuery('div.popUpWelcomeG'));
+	popUpMethods.popUpOpen(jQuery('div.popUpOnlyPic'));
+	*/
 }
 
 function showWW() {
+/*
 	var popUpMethods = new PopUpMethods();
 	popUpMethods.popUpClose();
 	popUpMethods.popUpOpen(jQuery('div.popUpWelcomeW'));
+	*/
 }
 
 jQuery.fn.extend({

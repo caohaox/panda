@@ -744,7 +744,7 @@ ul.actRMenu a:hover {
 .wlcRightBlock, .wlcRightBlock a, .wlcRightBlock a:visited, .wlcRightBlock a:hover {
 	color: #910707;
 }
-.popUpWelcomeG, .popUpWelcomeW {
+.popUpWelcomeG, .popUpWelcomeW .popUpChinaCity .popUpRussiaCity{
 	text-align: justify;
 }
 .popUpWText {
@@ -766,7 +766,7 @@ ul.actRMenu a:hover {
 	margin: 16px 0 0 4px;
 }
 .allinone_carousel_holder {
-	height: 237px;
+	height: 474px;
 	/*overflow: hidden;*/
 	margin: -19px 0 9px 24px;
 }
@@ -1487,7 +1487,7 @@ a.noPointer:hover {text-decoration: none;}
 .informer {display: block; padding: 5px 14px; background: #fffcb5; color: #358f11; margin-bottom: 5px;}
 .smiles {padding: 0 200px 10px 20px;}
 .smiles img {cursor: pointer;}
-#map area {cursor: pointer;}
+#map area {/*cursor: pointer;*/}
 .ggg {padding: 20px 0 0 0; text-align: center;}
 .button2 {display: inline-block; background: url(../img/template/button2.png) no-repeat right bottom; padding-right: 10px;}
 .button2 span {display: inline-block; background: url(../img/template/button2.png) no-repeat left top; height: 31px; line-height: 31px; padding-left: 10px; color: #fff; min-width: 156px; text-align: center; font-size: 13px; font-weight: bold;}
@@ -1595,4 +1595,51 @@ a.button2a:hover {cursor: default;}
 
 .accountItemDiamond .button, .accountItemDiamond .button a, .accountItemDiamond .button a:visited, .accountItemDiamond .button a:hover {
     color: #FFFFFF;
+}
+
+
+.avatars1 .dot{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 10px;
+	height: 10px;
+	background: transparent url(../img/template/circle.png) no-repeat top left;
+	z-index:-1000;
+	cursor: pointer
+}
+/* city */
+.avatars1 {
+    position: relative;
+    z-index: 1000;
+}
+.avatars1 div {
+    background: url("../img/template/avatarBG-rect.png") no-repeat scroll left top transparent;
+    display: none;
+    height: 95px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 87px;
+}
+.avatars1 a, .avatars1 a img {
+    display: block;
+    position: relative;
+}
+.avatars1 a {
+    display: none;
+    height: 81px;
+    margin: 3px;
+    overflow: hidden;
+    width: 81px;
+}
+.avatars1 div a {
+    display: block;
+}
+.avatars1 a img {
+	/*
+	border-radius: 41px; 
+	-moz-border-radius: 41px; 
+	-webkit-border-radius: 41px;
+	*/
 }
